@@ -5,6 +5,12 @@ using UnityEngine;
 public class ArmRotation : MonoBehaviour {
 
     public int rotOffset = 0;
+    public bool facingRight = true;
+    private Transform gfx;
+
+    private void Start() {
+        gfx = transform.root.GetChild( 0 );
+    }
 
     // Update is called once per frame
     void Update() {
@@ -23,5 +29,21 @@ public class ArmRotation : MonoBehaviour {
         else {
             transform.localScale = new Vector3( 1, 1, 1 );
         }
+
+        zRot = Mathf.Abs( zRot );
+
+        if( zRot > 90 && !facingRight ) {
+            Flip();
+        }
+        else if( zRot < 90 && facingRight ) {
+            Flip();
+        }
+    }
+
+    void Flip() {
+        facingRight = !facingRight;
+        Vector3 theScale = gfx.localScale;
+        theScale.x *= -1;
+        gfx.localScale = theScale;
     }
 }

@@ -12,7 +12,6 @@ public class Character : MonoBehaviour {
     public GameObject puff;
     public AudioClip jumpSound;
     public AudioClip landingSound;
-    public bool facingRight = true;
 
     private float groundRadius = 0.5f;
     public bool grounded = true;
@@ -90,20 +89,6 @@ public class Character : MonoBehaviour {
         anim.SetFloat( "Speed", Mathf.Abs( move ) );
 
         rb.velocity = new Vector2( move * maxSpeed, rb.velocity.y );
-
-        if( move > 0 && !facingRight ) {
-            Flip();
-        }
-        else if( move < 0 && facingRight ) {
-            Flip();
-        }
-    }
-
-    void Flip() {
-        facingRight = !facingRight;
-        Vector3 theScale = gfx.localScale;
-        theScale.x *= -1;
-        gfx.localScale = theScale;
     }
 
 
