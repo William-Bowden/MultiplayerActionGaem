@@ -10,9 +10,27 @@ public class Damageable : MonoBehaviour {
     public GameObject[] onDeathParticles;
     public AudioClip[] onDeathNoises;
 
+    SpriteRenderer sr;
+
     // Use this for initialization
     void Start() {
         maxHealth = health;
+        sr = GetComponent<SpriteRenderer>();
+
+        if( !sr ) {
+            sr = transform.GetChild( 0 ).GetComponent<SpriteRenderer>();
+        }
+    }
+
+    void Update() {
+        if( sr ) {
+            if( sr.color.g < 0.25f + health / maxHealth || sr.color.b < 0.25f + health / maxHealth ) {
+                Color temp = sr.color;
+                temp.g = Mathf.Min( sr.color.g + Time.deltaTime * 2, 1 );
+                temp.b = Mathf.Min( sr.color.b + Time.deltaTime * 2, 1 );
+                sr.color = temp;
+            }
+        }
     }
 
     public void TakeDamage( float amount ) {
@@ -23,6 +41,18 @@ public class Damageable : MonoBehaviour {
         }
 
         health -= amount;
+        //if( sr ) {
+        //    Color temp = sr.color;
+        //    temp.g = 0.275f;
+        //    temp.b = 0.275f;
+        //    sr.color = temp;
+        //}
+        if( sr ) {
+            Color temp = sr.color;
+            temp.g = 0.15f;
+            temp.b = 0.15f;
+            sr.color = temp;
+        }
 
         // after all damage has been applied, check if health is equal to or below 0
         if( health <= 0 ) {
@@ -43,11 +73,20 @@ public class Damageable : MonoBehaviour {
         if( health - amount <= 0 ) {
             Revive();
         }
+        if( health > maxHealth ) {
+            health = maxHealth;
+        }
     }
 
     // replenishes health back to maxHealth
     public void Replenish() {
         health = maxHealth;
+        if( sr ) {
+            Color temp = sr.color;
+            temp.g = 1;
+            temp.b = 1;
+            sr.color = temp;
+        }
     }
 
     void Die() {
