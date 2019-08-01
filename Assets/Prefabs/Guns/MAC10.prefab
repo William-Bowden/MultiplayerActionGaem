@@ -302,6 +302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupRadius: 1.25
+  triggerable: 1
   onStand: 0
   Available: 1
 --- !u!114 &3661487810353502279

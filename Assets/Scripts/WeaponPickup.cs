@@ -11,6 +11,12 @@ public class WeaponPickup : MonoBehaviour {
     float maxRemovalTimer = 5.0f;
     float removalTimer = 5.0f;
 
+
+    [SerializeField]
+    bool triggerable = true;
+    float shootTimer = 0.1f;
+    float maxShootTimer = 0.1f;
+
     public bool onStand = false;
 
     [SerializeField]
@@ -21,6 +27,7 @@ public class WeaponPickup : MonoBehaviour {
     public void MakeAvailable() {
         Available = true;
         rb.bodyType = RigidbodyType2D.Kinematic;
+        shootTimer = maxShootTimer;
     }
     public void SetAvailability( bool newAvailability ) {
         if( !newAvailability && onStand ) {
@@ -56,6 +63,10 @@ public class WeaponPickup : MonoBehaviour {
             if( distFromCenter > 30.0f ) {
                 RemovePickup();
             }
+
+            if( shootTimer > 0 ) {
+                shootTimer -= Time.deltaTime;
+            }
         }
     }
 
@@ -74,20 +85,29 @@ public class WeaponPickup : MonoBehaviour {
         foreach( Collider2D col in colliders ) {
             col.enabled = physics;
         }
+        shootTimer = 0;
     }
 
     void RemovePickup() {
         gameObject.SetActive( false );
         gun.Reload();
-        removalTimer = maxRemovalTimer;
+        shootTimer = 0;
     }
 
     private void OnCollisionEnter2D( Collision2D collision ) {
-        if( Mathf.Min( Random.Range( ( rb.velocity.magnitude ) / 6.0f, 1.0f ), 1.0f ) >= 0.75f ) {
-            gun.enabled = true;
-            gun.HitSurface();
-            gun.muzzleFlash.enabled = false;
-            gun.enabled = false;
+        if( triggerable ) {
+            if( shootTimer <= 0 ) {
+                float hit = Mathf.Min( rb.velocity.magnitude / 6.0f, 1.0f );
+                
+                if( hit + Random.Range( 0.0f, 0.4f ) >= 0.75f ) {
+                    gun.enabled = true;
+                    gun.HitSurface();
+                    gun.muzzleFlash.enabled = false;
+                    gun.enabled = false;
+                }
+
+                shootTimer = maxShootTimer;
+            }
         }
     }
 
