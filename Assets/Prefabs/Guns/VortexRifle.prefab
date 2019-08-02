@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 2621205502833093771}
   - component: {fileID: 2621205502833093768}
   m_Layer: 11
-  m_Name: VortexGun
+  m_Name: VortexRifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -312,6 +312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupRadius: 1.25
+  triggerable: 0
   onStand: 0
   Available: 1
 --- !u!114 &2621205502833093768
