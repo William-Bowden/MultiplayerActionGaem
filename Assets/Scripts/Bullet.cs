@@ -42,6 +42,7 @@ public class Bullet : MonoBehaviour {
 
     int groundLayer = 1 << 8;
     int platformLayer = 1 << 9;
+    float collideDistCheck = 0.35f;
 
     // Use this for initialization
     void Start() {
@@ -59,20 +60,21 @@ public class Bullet : MonoBehaviour {
 
         bool shouldBeDestroyed = false;
 
-        RaycastHit2D bulletInGround = Physics2D.Raycast( transform.position, transform.right, 0.05f, groundLayer );
+        RaycastHit2D hitLocation = Physics2D.Raycast( transform.position, transform.right, 50.0f, groundLayer );
+
+        RaycastHit2D bulletInGround = Physics2D.Raycast( transform.position, transform.right, 0.25f, groundLayer );
 
         if( bulletInGround ) {
             Destroy( gameObject );
         }
 
-        RaycastHit2D gunInGround = Physics2D.Raycast( transform.position, -transform.right, 0.75f, platformLayer );
+        RaycastHit2D gunInGround = Physics2D.Raycast( transform.position, -transform.right, 0.5f, platformLayer );
 
         shouldBeDestroyed = bulletInGround || gunInGround;
 
         if( shouldBeDestroyed ) {
             Destroy( gameObject );
         }
-
     }
 
     // Update is called once per frame
@@ -84,36 +86,43 @@ public class Bullet : MonoBehaviour {
             Destroy( gameObject );
         }
 
-        // grab the difference between the bullet position and it's future position position (normalized)
-        Vector3 difference = ( ( transform.position + new Vector3( rb.velocity.x, rb.velocity.y ) ) - transform.position ).normalized;
+        //// grab the difference between the bullet position and it's future position position (normalized)
+        //Vector3 difference = ( ( transform.position + new Vector3( rb.velocity.x, rb.velocity.y ) ) - transform.position ).normalized;
 
-        // calculate the rotation angle (face the direction in which it is moving)
-        float zRot = Mathf.Atan2( difference.y, difference.x ) * Mathf.Rad2Deg;
+        //// calculate the rotation angle (face the direction in which it is moving)
+        //float zRot = Mathf.Atan2( difference.y, difference.x ) * Mathf.Rad2Deg;
 
-        if( Mathf.Abs( rb.velocity.magnitude ) > 2 ) {
-            // rotate the arm
-            transform.rotation = Quaternion.Euler( 0f, 0f, zRot );
-        }
+        //if( Mathf.Abs( rb.velocity.magnitude ) > 2 ) {
+        //    // rotate the arm
+        //    transform.rotation = Quaternion.Euler( 0f, 0f, zRot );
+        //}
     }
 
     private void LateUpdate() {
-        // check ground
-        RaycastHit2D right = Physics2D.Raycast( transform.position, transform.right, 0.1f, groundLayer );
+        CheckForPossibleCollision();
+    }
 
-        RaycastHit2D left = Physics2D.Raycast( transform.position, -transform.right, 0.1f, groundLayer );
+    private bool CheckForPossibleCollision() {
+        // check ground
+        RaycastHit2D right = Physics2D.Raycast( transform.position, transform.right, collideDistCheck, groundLayer );
+
+        RaycastHit2D left = Physics2D.Raycast( transform.position, -transform.right, collideDistCheck, groundLayer );
 
         if( right.collider || left.collider ) {
             Destroy( gameObject );
+            return true;
         }
 
         // check platforms
-        right = Physics2D.Raycast( transform.position, transform.right, 0.2f, platformLayer );
+        right = Physics2D.Raycast( transform.position, transform.right, collideDistCheck, platformLayer );
 
-        left = Physics2D.Raycast( transform.position, -transform.right, 0.2f, platformLayer );
+        left = Physics2D.Raycast( transform.position, -transform.right, collideDistCheck, platformLayer );
 
         if( right.collider || left.collider ) {
             Destroy( gameObject );
+            return true;
         }
+        return false;
     }
 
     private void OnDestroy() {
@@ -147,17 +156,21 @@ public class Bullet : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D( Collider2D collision ) {
-        if( collision.transform == owner || collision.transform.IsChildOf( owner ) ) {
-            return;
-        }
-        if( removeOnTrigger ) {
-            Destroy( gameObject );
-        }
-        if( !removeOnCollision ) {
-            Damageable targetDamagable = collision.gameObject.GetComponent<Damageable>();
+        bool collisionCheck = CheckForPossibleCollision();
 
-            if( targetDamagable ) {
-                targetDamagable.TakeDamage( damage );
+        if( !collisionCheck ) {
+            if( collision.transform == owner || collision.transform.IsChildOf( owner ) ) {
+                return;
+            }
+            if( removeOnTrigger ) {
+                Destroy( gameObject );
+            }
+            if( !removeOnCollision ) {
+                Damageable targetDamagable = collision.gameObject.GetComponent<Damageable>();
+
+                if( targetDamagable ) {
+                    targetDamagable.TakeDamage( damage );
+                }
             }
         }
     }

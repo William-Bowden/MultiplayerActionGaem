@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6e4e4fc705376343a3e65b25d94f0e2, type: 3}
+  m_Name: DungeonGroundTile
+  m_EditorClassIdentifier: 
+  m_Sprites:
+  - {fileID: 190764453188300394, guid: b0b22846e6f5f6e41b84ba5757861850, type: 3}
+  - {fileID: 6428440561541370755, guid: b0b22846e6f5f6e41b84ba5757861850, type: 3}
+  - {fileID: -1309669769780746810, guid: b0b22846e6f5f6e41b84ba5757861850, type: 3}
+  - {fileID: -1309669769780746810, guid: b0b22846e6f5f6e41b84ba5757861850, type: 3}
+  - {fileID: -8518914180439121420, guid: b0b22846e6f5f6e41b84ba5757861850, type: 3}
+  - {fileID: -2835628247051868088, guid: b0b22846e6f5f6e41b84ba5757861850, type: 3}
+  - {fileID: 6730072041665037205, guid: b0b22846e6f5f6e41b84ba5757861850, type: 3}
+  - {fileID: 6730072041665037205, guid: b0b22846e6f5f6e41b84ba5757861850, type: 3}
+  - {fileID: 6730072041665037205, guid: b0b22846e6f5f6e41b84ba5757861850, type: 3}
+  - {fileID: -2169612027715720047, guid: b0b22846e6f5f6e41b84ba5757861850, type: 3}
+  - {fileID: -2169612027715720047, guid: b0b22846e6f5f6e41b84ba5757861850, type: 3}
+  - {fileID: -2259850415297017277, guid: b0b22846e6f5f6e41b84ba5757861850, type: 3}
+  - {fileID: -1677584550258837119, guid: b0b22846e6f5f6e41b84ba5757861850, type: 3}
+  - {fileID: -7696538051751403961, guid: b0b22846e6f5f6e41b84ba5757861850, type: 3}
+  - {fileID: -525532052592906302, guid: b0b22846e6f5f6e41b84ba5757861850, type: 3}

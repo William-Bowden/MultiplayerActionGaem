@@ -11,11 +11,10 @@ public class WeaponPickup : MonoBehaviour {
     float maxRemovalTimer = 5.0f;
     float removalTimer = 5.0f;
 
-
     [SerializeField]
     bool triggerable = true;
     float shootTimer = 0.1f;
-    float maxShootTimer = 0.1f;
+    public float maxShootTimer = 0.1f;
 
     public bool onStand = false;
 
@@ -26,6 +25,7 @@ public class WeaponPickup : MonoBehaviour {
     }
     public void MakeAvailable() {
         Available = true;
+        onStand = true;
         rb.bodyType = RigidbodyType2D.Kinematic;
         shootTimer = maxShootTimer;
     }
@@ -33,6 +33,7 @@ public class WeaponPickup : MonoBehaviour {
         if( !newAvailability && onStand ) {
             WeaponStand ws = transform.parent.GetComponent<WeaponStand>();
             ws.hasWeapon = false;
+            onStand = false;
         }
 
         Available = newAvailability;
@@ -94,6 +95,7 @@ public class WeaponPickup : MonoBehaviour {
         gameObject.SetActive( false );
         gun.Reload();
         shootTimer = 0;
+        removalTimer = maxRemovalTimer;
     }
 
     private void OnCollisionEnter2D( Collision2D collision ) {

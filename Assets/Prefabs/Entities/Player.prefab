@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotOffset: 0
+  facingRight: 1
 --- !u!1 &1314128190
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,6 +198,7 @@ GameObject:
   - component: {fileID: 50799575637882150}
   - component: {fileID: 58106083545229198}
   - component: {fileID: 114405106559726604}
+  - component: {fileID: 1411554052}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -212,7 +214,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1458081462656572}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.6, y: -3.497, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4481347164011322}
@@ -240,7 +242,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!58 &58106083545229198
 CircleCollider2D:
@@ -251,7 +253,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 1458081462656572}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b0568815408c1194c849952e44d0bf2f, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -274,13 +276,27 @@ MonoBehaviour:
   groundcheck: {fileID: 4248356302021384}
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 2817
   jumpForce: 850
   puff: {fileID: 0}
   jumpSound: {fileID: 8300000, guid: 885a17b2addc06d4eb14c5151998db59, type: 3}
   landingSound: {fileID: 8300000, guid: b941562528767f54db4882f65de8473f, type: 3}
-  facingRight: 1
   grounded: 1
+--- !u!114 &1411554052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458081462656572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c12378ad7a1ebc440a4f63f26b4b8363, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  onDeathParticles: []
+  onDeathNoises: []
 --- !u!1 &1820254087460554
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,7 +396,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3b8a7f04ff8371f44bc93f4b607a8df5, type: 3}
+  m_Sprite: {fileID: 455712905025646064, guid: 968a89c513cc25d4da4290cab7c7da65, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

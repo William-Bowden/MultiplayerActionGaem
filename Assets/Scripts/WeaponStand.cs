@@ -62,7 +62,6 @@ public class WeaponStand : MonoBehaviour {
             weaponToSpawn.transform.position = transform.position + weaponOffset;
             weaponToSpawn.transform.rotation = Quaternion.identity;
             weaponToSpawn.transform.localScale = Vector3.one;
-            weaponToSpawn.onStand = true;
             hasWeapon = true;
         }
         else {
