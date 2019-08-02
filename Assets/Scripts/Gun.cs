@@ -14,7 +14,8 @@ public class Gun : MonoBehaviour {
     float weaponAccuracy = 1f;
     [Range( 0, 1.5f ), SerializeField]
     float fireRate = 0.5f;
-    float shootTimer;
+    float shootTimer = 0;
+    float recoilTimer = 0;
 
     [Header( "'Anatomy'" )]
     public Transform muzzle;
@@ -32,6 +33,7 @@ public class Gun : MonoBehaviour {
 
     void Awake() {
         shootTimer = 0;
+        recoilTimer = 0;
         currentAmmo = maxAmmo;
         if( muzzle.childCount > 0 ) {
             muzzleFlash = muzzle.GetChild( 0 ).GetComponent<SpriteRenderer>();
@@ -41,6 +43,7 @@ public class Gun : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         shootTimer -= Time.deltaTime;
+        recoilTimer += Time.deltaTime;
 
         // shoot if the gun is able to at this time
         if( shootTimer < 0 && currentAmmo >= 0 ) {
@@ -73,6 +76,7 @@ public class Gun : MonoBehaviour {
                     // rotate children bullets?
                     currentChild.Rotate( 0, 0, Random.Range( -10.0f, 10.0f ) );
                 }
+                Destroy( bulletGO, 0.25f );
             }
             else {
                 Bullet bullet = bulletGO.GetComponent<Bullet>();
@@ -85,8 +89,8 @@ public class Gun : MonoBehaviour {
             // rotate the bullet to emulate weapon accuracy
             // the longer the wait between shots, the more accurate the shot is
             float timePast = 0;
-            if( shootTimer < -( fireRate ) ) {
-                timePast = Mathf.Abs( shootTimer ) / ( fireRate * 2.0f );
+            if( recoilTimer > fireRate * 1.1f ) {
+                timePast = Mathf.Min( recoilTimer / ( fireRate * 6 ), 1.0f );
             }
             float accuracy = Mathf.Max( 1 - timePast - weaponAccuracy, 0 );
             float rotation = accuracy * Random.Range( -30.0f, 30.0f );
@@ -115,6 +119,7 @@ public class Gun : MonoBehaviour {
 
         // reset the shoot timer
         shootTimer = fireRate;
+        recoilTimer = 0;
 
         // create smoke
         GameObject smoke = Instantiate( muzzleSmokePrefab, muzzle.position + new Vector3( 0.02f, 0, 0 ), transform.rotation, muzzle );

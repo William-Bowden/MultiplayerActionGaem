@@ -54,13 +54,15 @@ public class WeaponPickup : MonoBehaviour {
             if( gun.currentAmmo <= 0 ) {
                 removalTimer -= Time.deltaTime;
             }
-            if( removalTimer <= 0 ) {
-                RemovePickup();
+            else {
+                float distFromCenter = Mathf.Abs( ( transform.position - Vector3.zero ).magnitude );
+
+                if( distFromCenter > 30.0f ) {
+                    RemovePickup();
+                }
             }
 
-            float distFromCenter = Mathf.Abs( ( transform.position - Vector3.zero ).magnitude );
-
-            if( distFromCenter > 30.0f ) {
+            if( removalTimer <= 0 ) {
                 RemovePickup();
             }
 
@@ -98,7 +100,7 @@ public class WeaponPickup : MonoBehaviour {
         if( triggerable ) {
             if( shootTimer <= 0 ) {
                 float hit = Mathf.Min( rb.velocity.magnitude / 6.0f, 1.0f );
-                
+
                 if( hit + Random.Range( 0.0f, 0.4f ) >= 0.75f ) {
                     gun.enabled = true;
                     gun.HitSurface();
