@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.PlayerInput;
 using UnityEngine.UI;
 
 public class Character : MonoBehaviour {
 
-    public float maxSpeed = 10;
+    Vector2 move;
+    float maxSpeed = 10;
     public Transform groundcheck;
     public LayerMask whatIsGround;
     public float jumpForce = 1000;
@@ -40,20 +42,20 @@ public class Character : MonoBehaviour {
 
     void Update() {
 
-        if( ( grounded ) && ( Input.GetKeyDown( KeyCode.Space ) || Input.GetButtonDown( "Jump" ) ) ) {
-            //Vector3 newPos = gameObject.transform.position;
-            //newPos.y -= 0.4f;
-            //newPos.z -= 0.5f;
+        //if( ( grounded ) && ( Input.GetKeyDown( KeyCode.Space ) || Input.GetButtonDown( "Jump" ) ) ) {
+        //    Vector3 newPos = gameObject.transform.position;
+        //    newPos.y -= 0.4f;
+        //    newPos.z -= 0.5f;
 
-            //GameObject smokePuff = Instantiate( puff, newPos, Quaternion.identity ) as GameObject;
-            //Destroy( smokePuff, 1f );
+        //    GameObject smokePuff = Instantiate( puff, newPos, Quaternion.identity ) as GameObject;
+        //    Destroy( smokePuff, 1f );
 
-            //AudioSource.PlayClipAtPoint( jumpSound, Camera.main.transform.position );
+        //    AudioSource.PlayClipAtPoint( jumpSound, Camera.main.transform.position );
 
-            anim.SetBool( "Ground", false );
-            rb.velocity = new Vector2( rb.velocity.x, 0 );
-            rb.AddForce( new Vector2( 0, jumpForce ) );
-        }
+        //    anim.SetBool( "Ground", false );
+        //    rb.velocity = new Vector2( rb.velocity.x, 0 );
+        //    rb.AddForce( new Vector2( 0, jumpForce ) );
+        //}
 
         //when jump is released upward velocity is dampened
         if( Input.GetKeyUp( KeyCode.Space ) || Input.GetButtonUp( "Jump" ) ) {
@@ -84,11 +86,34 @@ public class Character : MonoBehaviour {
 
         anim.SetFloat( "vSpeed", rb.velocity.y );
 
-        float move = Input.GetAxis( "Horizontal" );
+        //float move = Input.GetAxis( "Horizontal" );
+        Move();
 
-        anim.SetFloat( "Speed", Mathf.Abs( move ) );
+        anim.SetFloat( "Speed", Mathf.Abs( move.x ) );
 
-        rb.velocity = new Vector2( move * maxSpeed, rb.velocity.y );
+        //rb.velocity = new Vector2( move * maxSpeed, rb.velocity.y );
+    }
+
+    void OnMove( InputValue value ) {
+        move = value.Get<Vector2>();
+    }
+    void OnJump() {
+        anim.SetBool( "Ground", false );
+        rb.velocity = new Vector2( rb.velocity.x, 0 );
+        rb.AddForce( new Vector2( 0, jumpForce ) );
+    }
+    void OnShoot() {
+        Attack();
+    }
+
+    void Move() {
+        float xMovement = move.x;
+
+        rb.velocity = new Vector2( xMovement * maxSpeed, rb.velocity.y );
+    }
+
+    void Attack() {
+        Debug.Log( "Shooting!(temp)" );
     }
 
 

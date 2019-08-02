@@ -454,6 +454,44 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2032702821}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &773281866 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1458081462656572, guid: 9f80332d5ae382940904bf95b3ff97b1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1868040187}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &773281867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 773281866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: a878a3ce7c1ae92488c6338111a94d64,
+    type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.InputSystem.PlayerInput.PlayerInput+DeviceLostEvent, Unity.InputSystem,
+      Version=0.9.0.0, Culture=neutral, PublicKeyToken=null
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.InputSystem.PlayerInput.PlayerInput+DeviceRegainedEvent,
+      Unity.InputSystem, Version=0.9.0.0, Culture=neutral, PublicKeyToken=null
+  m_ActionEvents: []
+  m_AutoSwitchControlScheme: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: 139ee5e7-5329-4a5d-9ca2-bee21e214fc5
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &904754249 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1458081462656572, guid: 9f80332d5ae382940904bf95b3ff97b1,
@@ -6549,6 +6587,10 @@ PrefabInstance:
       objectReference: {fileID: 455712905025646064, guid: 968a89c513cc25d4da4290cab7c7da65,
         type: 3}
     - target: {fileID: 979093058, guid: 9f80332d5ae382940904bf95b3ff97b1, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 154728535, guid: 9f80332d5ae382940904bf95b3ff97b1, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
