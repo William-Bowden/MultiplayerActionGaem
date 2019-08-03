@@ -24,6 +24,7 @@ public class Character : MonoBehaviour {
 
     Damageable dmg;
 
+    bool attacking = false;
     Gun gun;
 
     float jumpGrav = 2.5f;
@@ -45,41 +46,6 @@ public class Character : MonoBehaviour {
         grabber = transform.GetChild( 2 ).GetChild( 0 ).GetComponent<WeaponGrabber>();
     }
 
-    void Update() {
-
-        //if( ( grounded ) && ( Input.GetKeyDown( KeyCode.Space ) || Input.GetButtonDown( "Jump" ) ) ) {
-        //    Vector3 newPos = gameObject.transform.position;
-        //    newPos.y -= 0.4f;
-        //    newPos.z -= 0.5f;
-
-        //    GameObject smokePuff = Instantiate( puff, newPos, Quaternion.identity ) as GameObject;
-        //    Destroy( smokePuff, 1f );
-
-        //    AudioSource.PlayClipAtPoint( jumpSound, Camera.main.transform.position );
-
-        //    anim.SetBool( "Ground", false );
-        //    rb.velocity = new Vector2( rb.velocity.x, 0 );
-        //    rb.AddForce( new Vector2( 0, jumpForce ) );
-        //}
-
-        //when jump is released upward velocity is dampened
-        //if( Input.GetKeyUp( KeyCode.Space ) || Input.GetButtonUp( "Jump" ) ) {
-        //    Vector2 v = rb.velocity;
-        //    v.y *= 0.3f;
-        //    if( v.y > 0 ) {
-        //        rb.velocity = v;
-        //    }
-        //    rb.gravityScale = fallGrav;
-        //}
-
-        //if( Input.GetKeyDown( KeyCode.S ) ) {
-        //    gameObject.layer = ignorePlats;
-        //}
-        //else if( Input.GetKeyUp( KeyCode.S ) ) {
-        //    gameObject.layer = origLayer;
-        //}
-    }
-
     // Update is called once per frame
     void FixedUpdate() {
         grounded = Physics2D.OverlapCircle( groundcheck.position, groundRadius, whatIsGround );
@@ -90,6 +56,7 @@ public class Character : MonoBehaviour {
         }
 
         Move();
+        Attack();
 
         anim.SetFloat( "vSpeed", rb.velocity.y );
         anim.SetFloat( "Speed", Mathf.Abs( move.x ) );
@@ -123,7 +90,7 @@ public class Character : MonoBehaviour {
         rb.gravityScale = fallGrav;
     }
     void OnShoot() {
-        Attack();
+        attacking = !attacking;
     }
     void OnInteract() {
         grabber.Interact();
@@ -143,7 +110,7 @@ public class Character : MonoBehaviour {
     }
 
     void Attack() {
-        if( gun ) {
+        if( attacking && gun ) {
             gun.Shoot();
         }
     }

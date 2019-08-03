@@ -33,9 +33,9 @@
                     "name": "Shoot",
                     "type": "Button",
                     "id": "08193a1f-df2c-4a45-9608-6fd1db88f16a",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "Press(pressPoint=2E-05,behavior=2)"
                 },
                 {
                     "name": "Interact",
