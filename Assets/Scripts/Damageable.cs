@@ -85,6 +85,13 @@ public class Damageable : MonoBehaviour {
     }
 
     protected virtual void Die() {
+        DeathEffects();
+
+        // destroy this damageable
+        gameObject.SetActive( false );
+    }
+
+    protected void DeathEffects() {
         // if there are particles to be spawned on death
         if( onDeathParticles.Length != 0 ) {
             for( int i = 0; i < onDeathParticles.Length; i++ ) {
@@ -101,9 +108,6 @@ public class Damageable : MonoBehaviour {
         if( onDeathNoises.Length != 0 ) {
             AudioSource.PlayClipAtPoint( onDeathNoises[ Random.Range( 0, onDeathNoises.Length ) ], transform.position );
         }
-
-        // destroy this damageable
-        gameObject.SetActive( false );
     }
 
     void Revive() {

@@ -9,7 +9,7 @@ public class WeaponGrabber : MonoBehaviour {
 
     bool GAMERUNNING = false;
 
-    Transform weaponHeld = null;
+    public Transform weaponHeld = null;
 
     // Start is called before the first frame update
     void Awake() {

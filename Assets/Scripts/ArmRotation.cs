@@ -9,13 +9,17 @@ public class ArmRotation : MonoBehaviour {
     public int rotOffset = 0;
     public bool facingRight = true;
     private Transform gfx;
+    private Character character;
 
     private void Start() {
         gfx = transform.root.GetChild( 0 );
+        character = transform.root.GetComponent<Character>();
     }
 
     private void Update() {
-        Aim();
+        if( character.canInput ) {
+            Aim();
+        }
     }
 
     void OnAim( InputValue value ) {

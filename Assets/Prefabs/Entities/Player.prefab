@@ -264,8 +264,8 @@ GameObject:
   - component: {fileID: 50799575637882150}
   - component: {fileID: 58106083545229198}
   - component: {fileID: 114405106559726604}
-  - component: {fileID: 1411554052}
   - component: {fileID: 773281867}
+  - component: {fileID: 665605830467471379}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -347,22 +347,8 @@ MonoBehaviour:
   puff: {fileID: 0}
   jumpSound: {fileID: 8300000, guid: 885a17b2addc06d4eb14c5151998db59, type: 3}
   landingSound: {fileID: 8300000, guid: b941562528767f54db4882f65de8473f, type: 3}
+  canInput: 0
   grounded: 1
---- !u!114 &1411554052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1458081462656572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c12378ad7a1ebc440a4f63f26b4b8363, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  onDeathParticles: []
-  onDeathNoises: []
 --- !u!114 &773281867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -395,6 +381,22 @@ MonoBehaviour:
   m_DefaultActionMap: 139ee5e7-5329-4a5d-9ca2-bee21e214fc5
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &665605830467471379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458081462656572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23dd921ca8a11d84fa1643d2b58537c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  maxHealth: 0
+  onDeathParticles: []
+  onDeathNoises: []
 --- !u!1 &1820254087460554
 GameObject:
   m_ObjectHideFlags: 0
