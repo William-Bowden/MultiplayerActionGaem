@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.PlayerInput;
 
 public class ArmRotation : MonoBehaviour {
 
+    Vector2 aiming;
     public int rotOffset = 0;
     public bool facingRight = true;
     private Transform gfx;
@@ -12,10 +14,18 @@ public class ArmRotation : MonoBehaviour {
         gfx = transform.root.GetChild( 0 );
     }
 
-    // Update is called once per frame
-    void Update() {
+    private void Update() {
+        Aim();
+    }
 
-        Vector3 difference = ( Camera.main.ScreenToWorldPoint( Input.mousePosition ) - transform.position ).normalized;
+    void OnAim( InputValue value ) {
+        if( value.Get<Vector2>().magnitude > 0.5f ) {
+            aiming = value.Get<Vector2>();
+        }
+    }
+
+    void Aim() {
+        Vector3 difference = new Vector3( aiming.x, aiming.y, 0 ).normalized;
 
         // calculate the rotation angle
         float zRot = Mathf.Atan2( difference.y, difference.x ) * Mathf.Rad2Deg;

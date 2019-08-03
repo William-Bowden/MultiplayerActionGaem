@@ -18,55 +18,52 @@ public class WeaponGrabber : MonoBehaviour {
         GAMERUNNING = true;
     }
 
-    // Update is called once per frame
-    void Update() {
-        if( Input.GetKeyDown( KeyCode.E ) ) {
-            if( !weaponHeld ) {
-                WeaponPickup closestWeapon = null;
-                float shortestDistance = 0.0f;
+    public void Interact() {
+        if( !weaponHeld ) {
+            WeaponPickup closestWeapon = null;
+            float shortestDistance = 0.0f;
 
-                foreach( WeaponPickup weapon in weapons ) {
-                    // if this weapon is not available, skip checking it
-                    if( !weapon.IsAvailable() ) {
-                        continue;
-                    }
-
-                    float dist = Mathf.Abs( ( transform.parent.position - weapon.transform.position ).magnitude );
-
-                    // set the line color to green for weapons in reach
-                    if( dist <= weapon.pickupRadius ) {
-                        // if there is no current weapon or the distance to this weapon is shorter than the current closest weapon
-                        if( !closestWeapon || shortestDistance > dist ) {
-                            // set this weapon as the new closest
-                            closestWeapon = weapon;
-                            shortestDistance = dist;
-                        }
-                    }
+            foreach( WeaponPickup weapon in weapons ) {
+                // if this weapon is not available, skip checking it
+                if( !weapon.IsAvailable() ) {
+                    continue;
                 }
 
-                // if there is a weapon that is the closest and within reach
-                if( closestWeapon ) {
-                    // pick it up
-                    weaponsTransform = closestWeapon.transform.parent;
-                    closestWeapon.SetAvailability( false );
-                    closestWeapon.transform.SetParent( transform );
-                    closestWeapon.transform.localPosition = Vector3.zero;
-                    Vector3 scale = closestWeapon.transform.localScale;
-                    scale.y = 1;
-                    closestWeapon.transform.localScale = scale;
-                    closestWeapon.onStand = false;
-                    weaponHeld = closestWeapon.transform;
+                float dist = Mathf.Abs( ( transform.parent.position - weapon.transform.position ).magnitude );
 
-                    weaponHeld.rotation = transform.parent.localRotation;
+                // set the line color to green for weapons in reach
+                if( dist <= weapon.pickupRadius ) {
+                    // if there is no current weapon or the distance to this weapon is shorter than the current closest weapon
+                    if( !closestWeapon || shortestDistance > dist ) {
+                        // set this weapon as the new closest
+                        closestWeapon = weapon;
+                        shortestDistance = dist;
+                    }
                 }
             }
-            else {
-                WeaponPickup currentWeapon = weaponHeld.GetComponent<WeaponPickup>();
 
-                currentWeapon.SetAvailability( true );
-                currentWeapon.transform.SetParent( weaponsTransform );
-                weaponHeld = null;
+            // if there is a weapon that is the closest and within reach
+            if( closestWeapon ) {
+                // pick it up
+                weaponsTransform = closestWeapon.transform.parent;
+                closestWeapon.SetAvailability( false );
+                closestWeapon.transform.SetParent( transform );
+                closestWeapon.transform.localPosition = Vector3.zero;
+                Vector3 scale = closestWeapon.transform.localScale;
+                scale.y = 1;
+                closestWeapon.transform.localScale = scale;
+                closestWeapon.onStand = false;
+                weaponHeld = closestWeapon.transform;
+
+                weaponHeld.rotation = transform.parent.localRotation;
             }
+        }
+        else {
+            WeaponPickup currentWeapon = weaponHeld.GetComponent<WeaponPickup>();
+
+            currentWeapon.SetAvailability( true );
+            currentWeapon.transform.SetParent( weaponsTransform );
+            weaponHeld = null;
         }
     }
 

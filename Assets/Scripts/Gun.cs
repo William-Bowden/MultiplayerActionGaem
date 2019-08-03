@@ -45,86 +45,81 @@ public class Gun : MonoBehaviour {
         shootTimer -= Time.deltaTime;
         recoilTimer += Time.deltaTime;
 
-        // shoot if the gun is able to at this time
-        if( shootTimer < 0 && currentAmmo >= 0 ) {
-            // check for input for firing the weapon
-            if( Input.GetButton( "Fire1" ) ) {
-                // shoot the gun
-                Shoot();
-            }
-        }
         if( fireRate - shootTimer > 0.05 || shootTimer <= 0 ) {
             muzzleFlash.enabled = false;
         }
     }
 
-    void Shoot() {
-        int index = 0;
+    public void Shoot() {
+        // shoot if the gun is able to at this time
+        if( shootTimer < 0 && currentAmmo >= 0 ) {
+            int index = 0;
 
-        if( currentAmmo > 0 ) {
-            // create the bullet
-            GameObject bulletGO = Instantiate( bulletPrefab, muzzle.position + new Vector3( 0, 0, 1 ), transform.rotation );
+            if( currentAmmo > 0 ) {
+                // create the bullet
+                GameObject bulletGO = Instantiate( bulletPrefab, muzzle.position + new Vector3( 0, 0, 1 ), transform.rotation );
 
-            // assign the owner (shooter) to the bullet(s)
-            // if the bullet has children, do so for all children
-            int childCount = bulletGO.transform.childCount;
-            if( bulletGO.transform.childCount > 0 ) {
-                for( int i = 0; i < childCount; i++ ) {
-                    Transform currentChild = bulletGO.transform.GetChild( i );
-                    currentChild.GetComponent<Bullet>().owner = transform.root;
-                    currentChild.position += new Vector3( 0, 0.01f * ( i - Mathf.Min( childCount / 2 ) ), 0 );
-                    // rotate children bullets?
-                    currentChild.Rotate( 0, 0, Random.Range( -10.0f, 10.0f ) );
+                // assign the owner (shooter) to the bullet(s)
+                // if the bullet has children, do so for all children
+                int childCount = bulletGO.transform.childCount;
+                if( bulletGO.transform.childCount > 0 ) {
+                    for( int i = 0; i < childCount; i++ ) {
+                        Transform currentChild = bulletGO.transform.GetChild( i );
+                        currentChild.GetComponent<Bullet>().owner = transform.root;
+                        currentChild.position += new Vector3( 0, 0.01f * ( i - Mathf.Min( childCount / 2 ) ), 0 );
+                        // rotate children bullets?
+                        currentChild.Rotate( 0, 0, Random.Range( -10.0f, 10.0f ) );
+                    }
+                    Destroy( bulletGO, 0.25f );
                 }
-                Destroy( bulletGO, 0.25f );
+                else {
+                    Bullet bullet = bulletGO.GetComponent<Bullet>();
+
+                    if( bullet ) {
+                        bulletGO.GetComponent<Bullet>().owner = transform.root;
+                    }
+                }
+
+                // rotate the bullet to emulate weapon accuracy
+                // the longer the wait between shots, the more accurate the shot is
+                float timePast = 0;
+                if( recoilTimer > fireRate * 1.1f ) {
+                    timePast = Mathf.Min( recoilTimer / ( fireRate * 6 ), 1.0f );
+                }
+                float accuracy = Mathf.Max( 1 - timePast - weaponAccuracy, 0 );
+                float rotation = accuracy * Random.Range( -30.0f, 30.0f );
+
+                bulletGO.transform.Rotate( 0, 0, rotation );
+
+
+                if( muzzleEffects.Length > 0 ) {
+                    muzzleFlash.enabled = true;
+                    muzzleFlash.sprite = muzzleEffects[ Random.Range( 0, muzzleEffects.Length - 1 ) ];
+                }
+
+                currentAmmo--;
+
+                index = Random.Range( 0, fireSounds.Length );
+
+                // play the shooting sound
+                AudioSource.PlayClipAtPoint( fireSounds[ index ], muzzle.position, fireVolume );
             }
             else {
-                Bullet bullet = bulletGO.GetComponent<Bullet>();
+                index = Random.Range( 0, emptySounds.Length );
 
-                if( bullet ) {
-                    bulletGO.GetComponent<Bullet>().owner = transform.root;
-                }
+                // play the shooting sound
+                AudioSource.PlayClipAtPoint( emptySounds[ index ], muzzle.position, fireVolume );
             }
 
-            // rotate the bullet to emulate weapon accuracy
-            // the longer the wait between shots, the more accurate the shot is
-            float timePast = 0;
-            if( recoilTimer > fireRate * 1.1f ) {
-                timePast = Mathf.Min( recoilTimer / ( fireRate * 6 ), 1.0f );
-            }
-            float accuracy = Mathf.Max( 1 - timePast - weaponAccuracy, 0 );
-            float rotation = accuracy * Random.Range( -30.0f, 30.0f );
+            // reset the shoot timer
+            shootTimer = fireRate;
+            recoilTimer = 0;
 
-            bulletGO.transform.Rotate( 0, 0, rotation );
+            // create smoke
+            GameObject smoke = Instantiate( muzzleSmokePrefab, muzzle.position + new Vector3( 0.02f, 0, 0 ), transform.rotation, muzzle );
 
-
-            if( muzzleEffects.Length > 0 ) {
-                muzzleFlash.enabled = true;
-                muzzleFlash.sprite = muzzleEffects[ Random.Range( 0, muzzleEffects.Length - 1 ) ];
-            }
-
-            currentAmmo--;
-
-            index = Random.Range( 0, fireSounds.Length );
-
-            // play the shooting sound
-            AudioSource.PlayClipAtPoint( fireSounds[ index ], muzzle.position, fireVolume );
+            Destroy( smoke, 1f );
         }
-        else {
-            index = Random.Range( 0, emptySounds.Length );
-
-            // play the shooting sound
-            AudioSource.PlayClipAtPoint( emptySounds[ index ], muzzle.position, fireVolume );
-        }
-
-        // reset the shoot timer
-        shootTimer = fireRate;
-        recoilTimer = 0;
-
-        // create smoke
-        GameObject smoke = Instantiate( muzzleSmokePrefab, muzzle.position + new Vector3( 0.02f, 0, 0 ), transform.rotation, muzzle );
-
-        Destroy( smoke, 1f );
     }
 
     public void HitSurface() {

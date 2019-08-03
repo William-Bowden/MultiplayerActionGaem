@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 154728534}
   - component: {fileID: 154728535}
   - component: {fileID: 996014130}
+  - component: {fileID: 7279510412164874850}
   m_Layer: 13
   m_Name: WeaponSlot
   m_TagString: Untagged
@@ -60,6 +61,38 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.5
+--- !u!114 &7279510412164874850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154728533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: a878a3ce7c1ae92488c6338111a94d64,
+    type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.InputSystem.PlayerInput.PlayerInput+DeviceLostEvent, Unity.InputSystem,
+      Version=0.9.0.0, Culture=neutral, PublicKeyToken=null
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.InputSystem.PlayerInput.PlayerInput+DeviceRegainedEvent,
+      Unity.InputSystem, Version=0.9.0.0, Culture=neutral, PublicKeyToken=null
+  m_ActionEvents: []
+  m_AutoSwitchControlScheme: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: 139ee5e7-5329-4a5d-9ca2-bee21e214fc5
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &979093056
 GameObject:
   m_ObjectHideFlags: 0
@@ -70,6 +103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 979093057}
   - component: {fileID: 979093058}
+  - component: {fileID: 8306288416965076386}
   m_Layer: 13
   m_Name: ArmPivot
   m_TagString: Untagged
@@ -107,6 +141,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotOffset: 0
   facingRight: 1
+--- !u!114 &8306288416965076386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 979093056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: a878a3ce7c1ae92488c6338111a94d64,
+    type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.InputSystem.PlayerInput.PlayerInput+DeviceLostEvent, Unity.InputSystem,
+      Version=0.9.0.0, Culture=neutral, PublicKeyToken=null
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.InputSystem.PlayerInput.PlayerInput+DeviceRegainedEvent,
+      Unity.InputSystem, Version=0.9.0.0, Culture=neutral, PublicKeyToken=null
+  m_ActionEvents: []
+  m_AutoSwitchControlScheme: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: 547d4892-677b-46b5-b100-3e068c0b24c3
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &1314128190
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,6 +265,7 @@ GameObject:
   - component: {fileID: 58106083545229198}
   - component: {fileID: 114405106559726604}
   - component: {fileID: 1411554052}
+  - component: {fileID: 773281867}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -272,7 +339,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2b02d0df8be6e440835e6aa5da2970f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 8
   groundcheck: {fileID: 4248356302021384}
   whatIsGround:
     serializedVersion: 2
@@ -297,6 +363,38 @@ MonoBehaviour:
   health: 100
   onDeathParticles: []
   onDeathNoises: []
+--- !u!114 &773281867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458081462656572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: a878a3ce7c1ae92488c6338111a94d64,
+    type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.InputSystem.PlayerInput.PlayerInput+DeviceLostEvent, Unity.InputSystem,
+      Version=0.9.0.0, Culture=neutral, PublicKeyToken=null
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.InputSystem.PlayerInput.PlayerInput+DeviceRegainedEvent,
+      Unity.InputSystem, Version=0.9.0.0, Culture=neutral, PublicKeyToken=null
+  m_ActionEvents: []
+  m_AutoSwitchControlScheme: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: 139ee5e7-5329-4a5d-9ca2-bee21e214fc5
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &1820254087460554
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,12 +15,16 @@ public class Character : MonoBehaviour {
     public AudioClip jumpSound;
     public AudioClip landingSound;
 
+    WeaponGrabber grabber;
+
     private float groundRadius = 0.5f;
     public bool grounded = true;
     private Transform gfx;
     Rigidbody2D rb;
 
     Damageable dmg;
+
+    Gun gun;
 
     float jumpGrav = 2.5f;
     float fallGrav = 6f;
@@ -38,6 +42,7 @@ public class Character : MonoBehaviour {
         dmg = GetComponent<Damageable>();
         origLayer = gameObject.layer;
         ignorePlats = 14;
+        grabber = transform.GetChild( 2 ).GetChild( 0 ).GetComponent<WeaponGrabber>();
     }
 
     void Update() {
@@ -58,21 +63,21 @@ public class Character : MonoBehaviour {
         //}
 
         //when jump is released upward velocity is dampened
-        if( Input.GetKeyUp( KeyCode.Space ) || Input.GetButtonUp( "Jump" ) ) {
-            Vector2 v = rb.velocity;
-            v.y *= 0.3f;
-            if( v.y > 0 ) {
-                rb.velocity = v;
-            }
-            rb.gravityScale = fallGrav;
-        }
+        //if( Input.GetKeyUp( KeyCode.Space ) || Input.GetButtonUp( "Jump" ) ) {
+        //    Vector2 v = rb.velocity;
+        //    v.y *= 0.3f;
+        //    if( v.y > 0 ) {
+        //        rb.velocity = v;
+        //    }
+        //    rb.gravityScale = fallGrav;
+        //}
 
-        if( Input.GetKeyDown( KeyCode.S ) ) {
-            gameObject.layer = ignorePlats;
-        }
-        else if( Input.GetKeyUp( KeyCode.S ) ) {
-            gameObject.layer = origLayer;
-        }
+        //if( Input.GetKeyDown( KeyCode.S ) ) {
+        //    gameObject.layer = ignorePlats;
+        //}
+        //else if( Input.GetKeyUp( KeyCode.S ) ) {
+        //    gameObject.layer = origLayer;
+        //}
     }
 
     // Update is called once per frame
@@ -84,26 +89,51 @@ public class Character : MonoBehaviour {
             rb.gravityScale = jumpGrav;
         }
 
-        anim.SetFloat( "vSpeed", rb.velocity.y );
-
-        //float move = Input.GetAxis( "Horizontal" );
         Move();
 
+        anim.SetFloat( "vSpeed", rb.velocity.y );
         anim.SetFloat( "Speed", Mathf.Abs( move.x ) );
-
-        //rb.velocity = new Vector2( move * maxSpeed, rb.velocity.y );
     }
 
     void OnMove( InputValue value ) {
         move = value.Get<Vector2>();
+
+        if( move.y < -0.5f ) {
+            gameObject.layer = ignorePlats;
+            rb.gravityScale = fallGrav;
+            if( rb.velocity.y >= -1 ) {
+                rb.velocity = new Vector2( rb.velocity.x, rb.velocity.y - 1 );
+            }
+        }
+        else {
+            gameObject.layer = origLayer;
+        }
     }
     void OnJump() {
         anim.SetBool( "Ground", false );
         rb.velocity = new Vector2( rb.velocity.x, 0 );
         rb.AddForce( new Vector2( 0, jumpForce ) );
     }
+    void OnJumpRelease() {
+        Vector2 v = rb.velocity;
+        v.y *= 0.3f;
+        if( v.y > 0 ) {
+            rb.velocity = v;
+        }
+        rb.gravityScale = fallGrav;
+    }
     void OnShoot() {
         Attack();
+    }
+    void OnInteract() {
+        grabber.Interact();
+
+        if( !gun ) {
+            gun = GetComponentInChildren<Gun>();
+        }
+        else {
+            gun = null;
+        }
     }
 
     void Move() {
@@ -113,7 +143,9 @@ public class Character : MonoBehaviour {
     }
 
     void Attack() {
-        Debug.Log( "Shooting!(temp)" );
+        if( gun ) {
+            gun.Shoot();
+        }
     }
 
 
