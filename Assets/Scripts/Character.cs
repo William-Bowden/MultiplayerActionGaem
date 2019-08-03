@@ -94,7 +94,7 @@ public class Character : MonoBehaviour {
         }
     }
     void OnJump() {
-        if( canInput ) {
+        if( canInput && grounded ) {
             anim.SetBool( "Ground", false );
             rb.velocity = new Vector2( rb.velocity.x, 0 );
             rb.AddForce( new Vector2( 0, jumpForce ) );
