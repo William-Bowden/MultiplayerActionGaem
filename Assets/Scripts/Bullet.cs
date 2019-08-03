@@ -159,8 +159,10 @@ public class Bullet : MonoBehaviour {
         bool collisionCheck = CheckForPossibleCollision();
 
         if( !collisionCheck ) {
-            if( collision.transform == owner || collision.transform.IsChildOf( owner ) ) {
-                return;
+            if( owner ) {
+                if( collision.transform == owner || collision.transform.IsChildOf( owner ) ) {
+                    return;
+                }
             }
             if( removeOnTrigger ) {
                 Destroy( gameObject );

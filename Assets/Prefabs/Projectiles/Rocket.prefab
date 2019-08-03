@@ -95,7 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 150
   explosive: 1
-  explosionRadius: 2
+  explosionRadius: 1.5
   randomBetweenForce: 1
   initialForceMin: 15
   initialForce: 20

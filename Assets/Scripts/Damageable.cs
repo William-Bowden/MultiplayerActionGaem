@@ -5,6 +5,7 @@ using UnityEngine;
 public class Damageable : MonoBehaviour {
     [SerializeField]
     float health;
+    [SerializeField]
     float maxHealth;
 
     public GameObject[] onDeathParticles;
@@ -13,7 +14,7 @@ public class Damageable : MonoBehaviour {
     SpriteRenderer sr;
 
     // Use this for initialization
-    void Start() {
+    protected virtual void Start() {
         maxHealth = health;
         sr = GetComponent<SpriteRenderer>();
 
@@ -41,12 +42,6 @@ public class Damageable : MonoBehaviour {
         }
 
         health -= amount;
-        //if( sr ) {
-        //    Color temp = sr.color;
-        //    temp.g = 0.275f;
-        //    temp.b = 0.275f;
-        //    sr.color = temp;
-        //}
         if( sr ) {
             Color temp = sr.color;
             temp.g = 0.15f;
@@ -89,7 +84,7 @@ public class Damageable : MonoBehaviour {
         }
     }
 
-    void Die() {
+    protected virtual void Die() {
         // if there are particles to be spawned on death
         if( onDeathParticles.Length != 0 ) {
             for( int i = 0; i < onDeathParticles.Length; i++ ) {
