@@ -193,6 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickupRadius: 1.25
   triggerable: 1
+  maxShootTimer: 0.1
   onStand: 0
   Available: 1
 --- !u!114 &9214301058071448178

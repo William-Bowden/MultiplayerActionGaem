@@ -271,7 +271,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.55, y: 0.15}
+  m_Size: {x: 0.77, y: 0.15}
   m_EdgeRadius: 0
 --- !u!58 &3661487810353502272
 CircleCollider2D:
@@ -286,9 +286,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.15, y: 0.02}
+  m_Offset: {x: -0.27, y: 0.02}
   serializedVersion: 2
-  m_Radius: 0.15
+  m_Radius: 0.175
 --- !u!114 &3661487810353502276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,6 +303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickupRadius: 1.25
   triggerable: 1
+  maxShootTimer: 0.1
   onStand: 0
   Available: 1
 --- !u!114 &3661487810353502279
