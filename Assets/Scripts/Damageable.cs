@@ -11,6 +11,9 @@ public class Damageable : MonoBehaviour {
     public GameObject[] onDeathParticles;
     public AudioClip[] onDeathNoises;
 
+    [SerializeField]
+    float damgeToTake = 0;
+
     SpriteRenderer sr;
 
     // Use this for initialization
