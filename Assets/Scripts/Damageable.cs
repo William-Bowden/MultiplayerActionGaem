@@ -12,7 +12,7 @@ public class Damageable : MonoBehaviour {
     public AudioClip[] onDeathNoises;
 
     [SerializeField]
-    float damgeToTake = 0;
+    bool dieOnStomped;
 
     SpriteRenderer sr;
 
@@ -117,5 +117,21 @@ public class Damageable : MonoBehaviour {
         gameObject.SetActive( true );
 
         // add revival sounds/effects?
+    }
+
+    private void OnCollisionEnter2D( Collision2D collision ) {
+        Damageable damageable = collision.gameObject.GetComponent<Damageable>();
+        WeaponPickup pickup = collision.gameObject.GetComponent<WeaponPickup>();
+        if( collision.transform != transform && ( damageable || pickup ) ) {
+            if( dieOnStomped ) {
+                Vector3 diff = Vector3.Normalize( transform.position - collision.transform.position );
+                float dot = Vector3.Dot( diff, Vector3.up );
+                Debug.Log( dot );
+
+                if( dot < -0.6f ) {
+                    Die();
+                }
+            }
+        }
     }
 }

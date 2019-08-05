@@ -26,25 +26,19 @@ public class Container : Damageable {
     protected override void Die() {
         if( givesRandom ) {
             GameObject go = whatToDrop[ Random.Range( 0, whatToDrop.Count ) ];
-            gameObjects.Add( Instantiate( go, transform.position, Quaternion.Euler( goRotation ) ) );
+            if( go ) {
+                gameObjects.Add( Instantiate( go, transform.position, Quaternion.Euler( goRotation ) ) );
+            }
         }
         else {
             foreach( GameObject go in whatToDrop ) {
-                gameObjects.Add( Instantiate( go, transform.position, Quaternion.Euler( goRotation ) ) );
+                if( go ) {
+                    gameObjects.Add( Instantiate( go, transform.position, Quaternion.Euler( goRotation ) ) );
+                }
             }
         }
 
         base.Die();
-    }
-
-    private void OnCollisionEnter2D( Collision2D collision ) {
-        Vector3 diff = Vector3.Normalize( transform.position - collision.transform.position );
-        float dot = Vector3.Dot( diff, transform.up );
-        Debug.Log( dot );
-
-        if( dot < -0.6f ) {
-            Die();
-        }
     }
 
 }
