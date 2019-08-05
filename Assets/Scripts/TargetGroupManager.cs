@@ -25,8 +25,6 @@ public class TargetGroupManager : MonoBehaviour {
             camTimer += Time.deltaTime;
 
             if( camTimer >= 5.0f ) {
-                //tg.m_Targets[ camPriority ].weight = 1f;
-
                 prevPriority = camPriority++;
 
                 if( camPriority > tg.m_Targets.Length - 1 ) {
@@ -35,20 +33,17 @@ public class TargetGroupManager : MonoBehaviour {
                 camTimer = 0;
             }
 
-            //tg.m_Targets[ camPriority ].weight += Time.deltaTime;
             tg.m_Targets[ camPriority ].weight = Mathf.Lerp( tg.m_Targets[ camPriority ].weight, 5, 0.01f );
 
             if( prevPriority != camPriority ) {
                 tg.m_Targets[ prevPriority ].weight = Mathf.Lerp( tg.m_Targets[ prevPriority ].weight, 1, 0.1f );
             }
-
-            //foreach( CinemachineTargetGroup.Target target in tg.m_Targets ) {
-
-            //}
         }
     }
 
     void OnPlayerJoined( PlayerInput input ) {
+        Debug.Log("Player joined");
+
         Transform member = input.transform.root;
 
         foreach( CinemachineTargetGroup.Target target in tg.m_Targets ) {

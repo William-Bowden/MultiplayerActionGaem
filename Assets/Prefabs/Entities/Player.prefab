@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af7a660fe61f0f4499962c63e35e1551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponHeld: {fileID: 0}
 --- !u!58 &996014130
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -390,13 +391,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1458081462656572}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23dd921ca8a11d84fa1643d2b58537c7, type: 3}
+  m_Script: {fileID: 11500000, guid: fcfada49da30d59438cc36ed72b4b38a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
   maxHealth: 0
   onDeathParticles: []
   onDeathNoises: []
+  dieOnStomped: 1
 --- !u!1 &1820254087460554
 GameObject:
   m_ObjectHideFlags: 0
