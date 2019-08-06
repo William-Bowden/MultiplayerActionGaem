@@ -14,6 +14,9 @@ public class Damageable : MonoBehaviour {
     [SerializeField]
     bool dieOnStomped;
 
+    [HideInInspector]
+    public bool isDead;
+
     SpriteRenderer sr;
 
     // Use this for initialization
@@ -53,7 +56,7 @@ public class Damageable : MonoBehaviour {
         }
 
         // after all damage has been applied, check if health is equal to or below 0
-        if( health <= 0 ) {
+        if( health <= 0 && !isDead ) {
             Die();
         }
     }
@@ -89,6 +92,7 @@ public class Damageable : MonoBehaviour {
 
     protected virtual void Die() {
         DeathEffects();
+        isDead = true;
 
         // destroy this damageable
         gameObject.SetActive( false );
@@ -115,20 +119,28 @@ public class Damageable : MonoBehaviour {
 
     void Revive() {
         gameObject.SetActive( true );
-
+        isDead = false;
         // add revival sounds/effects?
     }
 
     private void OnCollisionEnter2D( Collision2D collision ) {
         Damageable damageable = collision.gameObject.GetComponent<Damageable>();
         WeaponPickup pickup = collision.gameObject.GetComponent<WeaponPickup>();
+        Character character = collision.gameObject.GetComponent<Character>();
         if( collision.transform != transform && ( damageable || pickup ) ) {
             if( dieOnStomped ) {
+                if( !character ) {
+                    float speedOfCollision = collision.rigidbody.velocity.y;
+                    Debug.Log( speedOfCollision );
+                    if( speedOfCollision > -1.0f ) {
+                        return;
+                    }
+                }
+
                 Vector3 diff = Vector3.Normalize( transform.position - collision.transform.position );
                 float dot = Vector3.Dot( diff, Vector3.up );
-                Debug.Log( dot );
 
-                if( dot < -0.6f ) {
+                if( dot < -0.8f ) {
                     Die();
                 }
             }

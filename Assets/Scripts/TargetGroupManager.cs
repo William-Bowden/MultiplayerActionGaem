@@ -24,7 +24,7 @@ public class TargetGroupManager : MonoBehaviour {
         if( playerCount <= 0 ) {
             camTimer += Time.deltaTime;
 
-            if( camTimer >= 5.0f ) {
+            if( camTimer >= 4.0f ) {
                 prevPriority = camPriority++;
 
                 if( camPriority > tg.m_Targets.Length - 1 ) {
@@ -39,10 +39,19 @@ public class TargetGroupManager : MonoBehaviour {
                 tg.m_Targets[ prevPriority ].weight = Mathf.Lerp( tg.m_Targets[ prevPriority ].weight, 1, 0.1f );
             }
         }
+        else {
+            foreach( CinemachineTargetGroup.Target target in tg.m_Targets ) {
+                Damageable damagable = target.target.GetComponent<Damageable>();
+
+                if( damagable.isDead ) {
+                    tg.RemoveMember( target.target.transform );
+                    playerCount--;
+                }
+            }
+        }
     }
 
     void OnPlayerJoined( PlayerInput input ) {
-        Debug.Log("Player joined");
 
         Transform member = input.transform.root;
 

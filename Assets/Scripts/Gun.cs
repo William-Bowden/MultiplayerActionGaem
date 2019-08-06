@@ -23,6 +23,7 @@ public class Gun : MonoBehaviour {
     public GameObject bulletPrefab;
     public GameObject muzzleSmokePrefab;
     public Sprite[] muzzleEffects;
+    LineRenderer laserSight;
 
     [Header( "Audio" )]
     public AudioClip[] fireSounds;
@@ -38,6 +39,8 @@ public class Gun : MonoBehaviour {
         if( muzzle.childCount > 0 ) {
             muzzleFlash = muzzle.GetChild( 0 ).GetComponent<SpriteRenderer>();
         }
+
+        laserSight = GetComponent<LineRenderer>();
     }
 
     // Update is called once per frame
@@ -47,6 +50,18 @@ public class Gun : MonoBehaviour {
 
         if( fireRate - shootTimer > 0.05 || shootTimer <= 0 ) {
             muzzleFlash.enabled = false;
+        }
+    }
+
+    private void OnEnable() {
+        if( laserSight ) {
+            laserSight.enabled = true;
+        }
+    }
+
+    private void OnDisable() {
+        if( laserSight ) {
+            laserSight.enabled = false;
         }
     }
 

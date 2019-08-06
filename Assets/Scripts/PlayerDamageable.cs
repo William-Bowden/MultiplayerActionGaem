@@ -14,6 +14,7 @@ public class PlayerDamageable : Damageable {
 
     protected override void Die() {
         DeathEffects();
+        isDead = true;
 
         character.canInput = false;
     }
