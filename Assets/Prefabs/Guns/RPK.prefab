@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d93a525746fff542b66f4567a8e8cef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAmmo: 40
+  maxAmmo: 30
   currentAmmo: 0
   weaponAccuracy: 0.2
   fireRate: 0.075
