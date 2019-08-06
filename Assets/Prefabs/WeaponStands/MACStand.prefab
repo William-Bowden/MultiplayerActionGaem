@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8024207231615796414}
   - component: {fileID: 8024207231615796415}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8024207232317899349}
   - component: {fileID: 8024207232317899338}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: MACStand
   m_TagString: Untagged
   m_Icon: {fileID: 2800000, guid: 354c0d4c5a394f44c92afc64b438f05c, type: 3}

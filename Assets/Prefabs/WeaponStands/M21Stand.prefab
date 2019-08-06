@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1163800452996320214}
   - component: {fileID: 1163800452996320213}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1163800453518720248}
   - component: {fileID: 1163800453518720249}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: M21Stand
   m_TagString: Untagged
   m_Icon: {fileID: 2800000, guid: bfa5568b2ccae5d48944a24c5a86da8f, type: 3}

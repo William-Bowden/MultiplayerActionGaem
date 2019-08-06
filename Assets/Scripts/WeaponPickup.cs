@@ -26,6 +26,7 @@ public class WeaponPickup : MonoBehaviour {
     public void MakeAvailable() {
         Available = true;
         onStand = true;
+        gameObject.layer = 16;
         rb.bodyType = RigidbodyType2D.Kinematic;
         shootTimer = maxShootTimer;
     }
@@ -34,6 +35,7 @@ public class WeaponPickup : MonoBehaviour {
             WeaponStand ws = transform.parent.GetComponent<WeaponStand>();
             ws.hasWeapon = false;
             onStand = false;
+            gameObject.layer = 11;
         }
 
         Available = newAvailability;

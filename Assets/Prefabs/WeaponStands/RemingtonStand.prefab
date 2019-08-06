@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4779939074297013392}
   - component: {fileID: 4779939074297013487}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: RemingtonStand
   m_TagString: Untagged
   m_Icon: {fileID: 2800000, guid: 69522a3ea186efa468acfd4ba1dcf824, type: 3}
@@ -61,7 +61,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4779939074976620025}
   - component: {fileID: 4779939074976620026}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
