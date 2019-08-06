@@ -7,20 +7,20 @@ using UnityEngine.UI;
 public class Character : MonoBehaviour {
 
     Vector2 move;
-    float maxSpeed = 10;
-    public Transform groundcheck;
-    public LayerMask whatIsGround;
-    public float jumpForce = 1000;
-    public GameObject puff;
-    public AudioClip jumpSound;
-    public AudioClip landingSound;
+    [SerializeField] float maxSpeed = 10.0f;
+    [SerializeField] Transform groundcheck;
+    [SerializeField] LayerMask whatIsGround;
+    [SerializeField] float jumpForce = 1000;
+    [SerializeField] GameObject puff;
+    [SerializeField] AudioClip jumpSound;
+    [SerializeField] AudioClip landingSound;
 
     public bool canInput = false;
 
     WeaponGrabber grabber;
 
     private float groundRadius = 0.5f;
-    public bool grounded = true;
+    bool grounded = true;
     private Transform gfx;
     Rigidbody2D rb;
 
@@ -29,8 +29,8 @@ public class Character : MonoBehaviour {
     bool attacking = false;
     Gun gun;
 
-    float jumpGrav = 2.5f;
-    float fallGrav = 6f;
+    float jumpGrav = 3f;
+    float fallGrav = 7f;
 
     Animator anim;
 
@@ -48,6 +48,8 @@ public class Character : MonoBehaviour {
         ignorePlats = 14;
         grabber = transform.GetChild( 2 ).GetChild( 0 ).GetComponent<WeaponGrabber>();
         anim.SetBool( "Dead", false );
+
+        jumpGrav = rb.gravityScale;
     }
 
     // Update is called once per frame
