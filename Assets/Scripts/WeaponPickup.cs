@@ -10,6 +10,7 @@ public class WeaponPickup : MonoBehaviour {
 
     float maxRemovalTimer = 5.0f;
     float removalTimer = 5.0f;
+    float maxDistance = 50.0f;
 
     [SerializeField]
     bool triggerable = true;
@@ -62,7 +63,7 @@ public class WeaponPickup : MonoBehaviour {
             else {
                 float distFromCenter = Mathf.Abs( ( transform.position - Vector3.zero ).magnitude );
 
-                if( distFromCenter > 30.0f ) {
+                if( distFromCenter > maxDistance ) {
                     RemovePickup();
                 }
             }
@@ -96,6 +97,10 @@ public class WeaponPickup : MonoBehaviour {
     }
 
     void RemovePickup() {
+        if( transform.parent == null ) {
+            Destroy( gameObject );
+        }
+
         gameObject.SetActive( false );
         gun.Reload();
         shootTimer = 0;

@@ -153,6 +153,7 @@ MonoBehaviour:
   dieOnStomped: 1
   isDead: 0
   givesRandom: 1
+  numToGive: 1
   whatToDrop:
   - {fileID: 9214301058071448184, guid: d393595b74d8ef74d82a73d7d9e67ef3, type: 3}
   - {fileID: 9214301058071448184, guid: d393595b74d8ef74d82a73d7d9e67ef3, type: 3}
@@ -163,4 +164,6 @@ MonoBehaviour:
   - {fileID: 3661487810353502273, guid: 566844e1f45de6c4194492303fc255a0, type: 3}
   - {fileID: 3661487810353502273, guid: d4dc20fe2b4785a49888444271f52604, type: 3}
   - {fileID: 3661487810353502273, guid: 1478981ec6be0294aa05a25246f8e310, type: 3}
+  - {fileID: 3661487810353502273, guid: 589fb1edb2801bf46adb60183e1a4c3e, type: 3}
+  - {fileID: 3661487810353502273, guid: d669698db39cc874ca51dfd973511c35, type: 3}
   goRotation: {x: 0, y: 0, z: 0}
