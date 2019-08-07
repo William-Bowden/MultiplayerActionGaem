@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6657153602147515649}
   - component: {fileID: 996827126412553671}
   m_Layer: 12
-  m_Name: Bullet_SMG
+  m_Name: Bullet_Heavy (50)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,15 +93,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c855c8f8b48b9e49af8fc72f57bfb60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
+  damage: 50
   explosive: 0
   explosionRadius: 1
   randomBetweenForce: 1
-  initialForceMin: 10
-  initialForce: 15
+  initialForceMin: 12
+  initialForce: 20
   randomBetweenLife: 1
-  MinLife: 0.45
-  maxLife: 0.75
+  MinLife: 0.6
+  maxLife: 0.8
   removeOnTrigger: 1
   removeOnCollision: 0
   puffPrefab: {fileID: 5752710622799710428, guid: a30344174757cbd4394b46f9ab1d92ac,
@@ -149,7 +149,7 @@ TrailRenderer:
   m_Time: 0.05
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.08
+    widthMultiplier: 0.125
     widthCurve:
       serializedVersion: 2
       m_Curve:

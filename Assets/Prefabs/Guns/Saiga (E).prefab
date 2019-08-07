@@ -68,7 +68,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 31616eecf2ac55b45842b215b8386070, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7008bd94f15def7419eae3211fdbd127, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 3661487810353502276}
   - component: {fileID: 3661487810353502279}
   m_Layer: 11
-  m_Name: Saiga
+  m_Name: Saiga (E)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -239,13 +239,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d93a525746fff542b66f4567a8e8cef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAmmo: 8
+  maxAmmo: 5
   currentAmmo: 0
   weaponAccuracy: 0.9
   fireRate: 0.35
   muzzle: {fileID: 3661487810194517942}
   muzzleFlash: {fileID: 0}
-  bulletPrefab: {fileID: 1409472510492635337, guid: 1a982908959577248a0108e4c67b95e6,
+  bulletPrefab: {fileID: 1409472510492635337, guid: aee93ef76a6fe8441926e44c3e9f7b19,
     type: 3}
   muzzleSmokePrefab: {fileID: 5752710622799710428, guid: a30344174757cbd4394b46f9ab1d92ac,
     type: 3}

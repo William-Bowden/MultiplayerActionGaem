@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6657153602147515649}
   - component: {fileID: 996827126412553671}
   m_Layer: 12
-  m_Name: Rocket
+  m_Name: Bullet_SMG (30)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,21 +93,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c855c8f8b48b9e49af8fc72f57bfb60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 150
-  explosive: 1
-  explosionRadius: 1.5
+  damage: 30
+  explosive: 0
+  explosionRadius: 1
   randomBetweenForce: 1
-  initialForceMin: 15
-  initialForce: 20
-  randomBetweenLife: 0
-  MinLife: 2
-  maxLife: 1
+  initialForceMin: 10
+  initialForce: 15
+  randomBetweenLife: 1
+  MinLife: 0.35
+  maxLife: 0.6
   removeOnTrigger: 1
-  removeOnCollision: 1
+  removeOnCollision: 0
   puffPrefab: {fileID: 5752710622799710428, guid: a30344174757cbd4394b46f9ab1d92ac,
     type: 3}
-  explosionPrefab: {fileID: 477631860813595833, guid: 534fd67c85403d141b3d63f74206918a,
-    type: 3}
+  explosionPrefab: {fileID: 0}
   owner: {fileID: 0}
 --- !u!96 &996827126412553671
 TrailRenderer:
@@ -150,7 +149,7 @@ TrailRenderer:
   m_Time: 0.05
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.5
+    widthMultiplier: 0.08
     widthCurve:
       serializedVersion: 2
       m_Curve:

@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4779939074297013392}
   - component: {fileID: 4779939074297013487}
   m_Layer: 16
-  m_Name: FamasStand
+  m_Name: AKStand
   m_TagString: Untagged
-  m_Icon: {fileID: 2800000, guid: 5ceed62ba5ae42f43987416c32b93b91, type: 3}
+  m_Icon: {fileID: 2800000, guid: 6e5b45b441f80194596b3581bc4161af, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b30a7d4056a79044eb0890c5e3f07c4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 3661487810353502273, guid: 1478981ec6be0294aa05a25246f8e310,
+  weaponPrefab: {fileID: 3661487810353502273, guid: 0e7bddf0adc5e2b45a1d0897cbf1d24c,
     type: 3}
   weaponPool: []
   hasWeapon: 0

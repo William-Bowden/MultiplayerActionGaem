@@ -94,7 +94,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 5
+  m_Mass: 25
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 302f8fc6cae04e444b9ed72a6db9fc07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 80
   maxHealth: 0
   onDeathParticles:
   - {fileID: 477631860813595833, guid: 6ef3b8e27054dfd4bab244c6ceac4840, type: 3}
@@ -157,7 +157,8 @@ MonoBehaviour:
   - {fileID: 3661487810353502273, guid: 95e1647e89f90e440b16c6047ce8a75f, type: 3}
   - {fileID: 3661487810353502273, guid: 44f059462f1619a4980f14fc937c480e, type: 3}
   - {fileID: 3661487810353502273, guid: 1a9887e77a8dc8a46bbf34b84e3a4052, type: 3}
-  - {fileID: 3661487810353502273, guid: c788710cde7f9e544ba68b1ea58b0814, type: 3}
+  - {fileID: 3661487810353502273, guid: 1478981ec6be0294aa05a25246f8e310, type: 3}
   - {fileID: 3661487810353502273, guid: 6f3de1feddcc00547a798e15d45a0a14, type: 3}
   - {fileID: 3661487810353502273, guid: 1871331dfc3b80c459014d60f933ad2f, type: 3}
+  - {fileID: 3661487810353502273, guid: 0e7bddf0adc5e2b45a1d0897cbf1d24c, type: 3}
   goRotation: {x: 0, y: 0, z: 0}

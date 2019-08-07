@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6657153602147515649}
   - component: {fileID: 996827126412553671}
   m_Layer: 12
-  m_Name: Bullet_Pellet_Small
+  m_Name: Bullet_Pellet_Small (25)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

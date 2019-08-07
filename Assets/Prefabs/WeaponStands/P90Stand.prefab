@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4779939074297013392}
   - component: {fileID: 4779939074297013487}
   m_Layer: 16
-  m_Name: FamasStand
+  m_Name: P90Stand
   m_TagString: Untagged
-  m_Icon: {fileID: 2800000, guid: 5ceed62ba5ae42f43987416c32b93b91, type: 3}
+  m_Icon: {fileID: 2800000, guid: 40247431bf83f554093285328edf7eef, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b30a7d4056a79044eb0890c5e3f07c4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 3661487810353502273, guid: 1478981ec6be0294aa05a25246f8e310,
+  weaponPrefab: {fileID: 3661487810353502273, guid: 589fb1edb2801bf46adb60183e1a4c3e,
     type: 3}
   weaponPool: []
   hasWeapon: 0

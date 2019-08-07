@@ -242,7 +242,7 @@ MonoBehaviour:
   maxAmmo: 30
   currentAmmo: 0
   weaponAccuracy: 0.2
-  fireRate: 0.075
+  fireRate: 0.125
   muzzle: {fileID: 3661487810194517942}
   muzzleFlash: {fileID: 3317119925387776245}
   bulletPrefab: {fileID: 5363642494251245571, guid: 6afff9b956d26f84db9a51347ad0b00a,

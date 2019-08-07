@@ -94,7 +94,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 5
+  m_Mass: 25
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -148,7 +148,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 863552bd9c609704291e21a498988cc5, type: 3}
   - {fileID: 8300000, guid: df5b0745f3cd2e3489613f4942070292, type: 3}
   - {fileID: 8300000, guid: 07cb8d8445b0fe84599e7d9f8f734a02, type: 3}
-  damgeToTake: 100
+  dieOnStomped: 0
+  isDead: 0
+  givesRandom: 0
   whatToDrop:
   - {fileID: 5363642494251245571, guid: 470c094b23dff7c4d913cba1fcb89378, type: 3}
   goRotation: {x: 0, y: 0, z: -90}
