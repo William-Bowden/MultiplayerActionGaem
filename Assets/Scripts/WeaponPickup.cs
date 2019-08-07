@@ -13,6 +13,7 @@ public class WeaponPickup : MonoBehaviour {
 
     [SerializeField]
     bool triggerable = true;
+    int numCollisions = 0;
     float shootTimer = 0.1f;
     public float maxShootTimer = 0.1f;
 
@@ -38,6 +39,7 @@ public class WeaponPickup : MonoBehaviour {
             gameObject.layer = 11;
         }
 
+        numCollisions = 0;
         Available = newAvailability;
         TogglePhysics( newAvailability );
     }
@@ -102,10 +104,11 @@ public class WeaponPickup : MonoBehaviour {
 
     private void OnCollisionEnter2D( Collision2D collision ) {
         if( triggerable ) {
-            if( shootTimer <= 0 ) {
+            if( shootTimer <= 0 && numCollisions++ > 1 ) {
                 float hit = Mathf.Min( rb.velocity.magnitude / 6.0f, 1.0f );
 
-                if( hit + Random.Range( 0.0f, 0.4f ) >= 0.75f ) {
+                //if( hit + Random.Range( 0.0f, 0.4f ) >= 0.75f ) {
+                if( true ) {
                     gun.enabled = true;
                     gun.HitSurface();
                     gun.muzzleFlash.enabled = false;

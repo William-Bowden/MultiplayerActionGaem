@@ -88,6 +88,7 @@ public class Damageable : MonoBehaviour {
             temp.b = 1;
             sr.color = temp;
         }
+        isDead = false;
     }
 
     protected virtual void Die() {
@@ -131,8 +132,7 @@ public class Damageable : MonoBehaviour {
             if( dieOnStomped ) {
                 if( !character ) {
                     float speedOfCollision = collision.rigidbody.velocity.y;
-                    Debug.Log( speedOfCollision );
-                    if( speedOfCollision > -1.0f ) {
+                    if( speedOfCollision > -6.0f ) {
                         return;
                     }
                 }

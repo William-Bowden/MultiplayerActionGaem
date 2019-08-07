@@ -8,6 +8,9 @@ public class Container : Damageable {
     // if false, all items from the whatToDrop list will be dropped
     [SerializeField]
     bool givesRandom = false;
+    [SerializeField]
+    int numToGive = 1;
+
 
     [SerializeField]
     protected List<GameObject> whatToDrop;

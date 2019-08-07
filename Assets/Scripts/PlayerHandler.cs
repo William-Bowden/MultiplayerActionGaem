@@ -15,4 +15,10 @@ public class PlayerHandler : MonoBehaviour {
         startPositions.Remove( pos );
     }
 
+    private void OnDrawGizmosSelected() {
+        foreach( Vector3 pos in startPositions ) {
+            Gizmos.DrawWireSphere( pos, 1.0f );
+        }
+    }
+
 }

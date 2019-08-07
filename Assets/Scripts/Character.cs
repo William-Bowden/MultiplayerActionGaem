@@ -19,7 +19,7 @@ public class Character : MonoBehaviour {
 
     WeaponGrabber grabber;
 
-    private float groundRadius = 0.5f;
+    private float groundRadius = 0.35f;
     bool grounded = true;
     private Transform gfx;
     Rigidbody2D rb;
@@ -151,5 +151,9 @@ public class Character : MonoBehaviour {
         //if( collision.gameObject.name.Contains( "Grass" ) ) {
         //    AudioSource.PlayClipAtPoint( landingSound, Camera.main.transform.position );
         //}
+    }
+
+    private void OnDrawGizmosSelected() {
+        Gizmos.DrawWireSphere( groundcheck.position, groundRadius );
     }
 }
