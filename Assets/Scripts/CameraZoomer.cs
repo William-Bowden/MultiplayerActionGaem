@@ -36,6 +36,6 @@ public class CameraZoomer : MonoBehaviour {
 
         }
 
-        cam.m_Lens.OrthographicSize = Mathf.Lerp( cam.m_Lens.OrthographicSize, ( furthest + 10 ) / 2, 0.1f );
+        cam.m_Lens.OrthographicSize = Mathf.Lerp( cam.m_Lens.OrthographicSize, ( furthest + 7 ) / 2, 0.1f );
     }
 }

@@ -8,7 +8,7 @@ public class Parallaxing : MonoBehaviour {
     public float smoothing = 1f;        // how smooth the parallax is going to be. Make sure to set this above 0
 
     private Transform cam;              //reference to the main cameras transform
-    private Vector3 previousCamPos;     //the position of the camera in teh previous frame
+    private Vector3 previousCamPos;     //the position of the camera in the previous frame
 
     //Is called before start(). Great for references
     void Awake() {
@@ -33,7 +33,7 @@ public class Parallaxing : MonoBehaviour {
     void Update() {
         //for each background
         for( int i = 0; i < backgrounds.Length; i++ ) {
-            // the parallax is the opposite of the camera  movement becuase teh previous frame multiplied bye the scale
+            // the parallax is the opposite of the camera movement because the previous frame multiplied by the scale
             float parallax = ( previousCamPos.x - cam.position.x ) * parallaxScales[ i ];
             // set a target x position which is the current position plus the parallax
             float backgroundTargetPosX = backgrounds[ i ].position.x + parallax;
