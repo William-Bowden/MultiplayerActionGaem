@@ -11,11 +11,11 @@ public class Interactable : MonoBehaviour {
         col = GetComponent<Collider2D>();
     }
 
-    protected void Interact() {
-        Debug.Log( gameObject + " was interacted with");
+    public virtual void Interact() {
+        Debug.Log( gameObject.name + " was interacted with" );
     }
 
-    protected void OnTriggerEnter2D( Collider2D collision ) {
+    protected virtual void OnTriggerEnter2D( Collider2D collision ) {
 
     }
 

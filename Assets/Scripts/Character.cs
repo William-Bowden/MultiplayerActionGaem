@@ -27,6 +27,7 @@ public class Character : MonoBehaviour {
     Damageable dmg;
 
     bool attacking = false;
+    [SerializeField]
     Gun gun;
 
     float jumpGrav = 3f;
@@ -119,14 +120,7 @@ public class Character : MonoBehaviour {
     }
     void OnInteract() {
         if( canInput ) {
-            grabber.Interact();
-
-            if( !gun ) {
-                gun = GetComponentInChildren<Gun>();
-            }
-            else {
-                gun = null;
-            }
+            gun = grabber.Interact();
         }
     }
 

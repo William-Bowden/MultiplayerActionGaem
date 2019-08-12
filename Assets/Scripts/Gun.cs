@@ -14,6 +14,7 @@ public class Gun : MonoBehaviour {
     float weaponAccuracy = 1f;
     [Range( 0, 1.5f ), SerializeField]
     float fireRate = 0.5f;
+    [SerializeField]
     float shootTimer = 0;
     float recoilTimer = 0;
 

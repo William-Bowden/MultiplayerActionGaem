@@ -126,7 +126,7 @@ public class Damageable : MonoBehaviour {
 
     private void OnCollisionEnter2D( Collision2D collision ) {
         Damageable damageable = collision.gameObject.GetComponent<Damageable>();
-        WeaponPickup pickup = collision.gameObject.GetComponent<WeaponPickup>();
+        Interactable pickup = collision.gameObject.GetComponent<Interactable>();
         Character character = collision.gameObject.GetComponent<Character>();
         if( collision.transform != transform && ( damageable || pickup ) ) {
             if( dieOnStomped ) {

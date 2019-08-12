@@ -5,7 +5,7 @@ using UnityEngine;
 public class WeaponStand : MonoBehaviour {
 
     public GameObject weaponPrefab;
-    public List<WeaponPickup> weaponPool;
+    public List<Interactable> weaponPool;
     private int poolSize = 8;
 
 
@@ -23,7 +23,7 @@ public class WeaponStand : MonoBehaviour {
         for( int i = 0; i < poolSize; i++ ) {
             GameObject currentWeapon = Instantiate( weaponPrefab, transform );
             currentWeapon.SetActive( false );
-            WeaponPickup currentPickup = currentWeapon.GetComponent<WeaponPickup>();
+            Interactable currentPickup = currentWeapon.GetComponent<Interactable>();
             weaponPool.Add( currentPickup );
         }
 

@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponPickup : MonoBehaviour {
+public class WeaponPickup : Interactable {
 
     public float pickupRadius = 1.0f;
 
     Gun gun;
+    Transform origParent;
 
     float maxRemovalTimer = 5.0f;
     float removalTimer = 5.0f;
@@ -53,6 +54,7 @@ public class WeaponPickup : MonoBehaviour {
         colliders = GetComponents<Collider2D>();
         gun = GetComponent<Gun>();
         removalTimer = maxRemovalTimer;
+        origParent = transform.parent;
     }
 
     private void Update() {
@@ -75,6 +77,27 @@ public class WeaponPickup : MonoBehaviour {
             if( shootTimer > 0 ) {
                 shootTimer -= Time.deltaTime;
             }
+        }
+    }
+
+    public void Interact( Transform weaponHeld, Transform newParent ) {
+        base.Interact();
+        Debug.Log( "interaction with a weapon: " + gameObject.name );
+        if( !weaponHeld ) {
+            // pick it up
+            SetAvailability( false );
+            transform.SetParent( newParent );
+            transform.localPosition = Vector3.zero;
+            Vector3 scale = transform.localScale;
+            scale.y = 1;
+            transform.localScale = scale;
+            onStand = false;
+
+            transform.rotation = newParent.rotation;
+        }
+        else {
+            SetAvailability( true );
+            transform.SetParent( origParent );
         }
     }
 
