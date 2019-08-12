@@ -15,8 +15,4 @@ public class Interactable : MonoBehaviour {
         Debug.Log( gameObject.name + " was interacted with" );
     }
 
-    protected virtual void OnTriggerEnter2D( Collider2D collision ) {
-
-    }
-
 }

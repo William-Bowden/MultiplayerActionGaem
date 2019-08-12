@@ -61,7 +61,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.75
+  m_Radius: 1.5
 --- !u!114 &7279510412164874850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,6 +350,7 @@ MonoBehaviour:
   jumpSound: {fileID: 8300000, guid: 885a17b2addc06d4eb14c5151998db59, type: 3}
   landingSound: {fileID: 8300000, guid: b941562528767f54db4882f65de8473f, type: 3}
   canInput: 0
+  gun: {fileID: 0}
 --- !u!114 &773281867
 MonoBehaviour:
   m_ObjectHideFlags: 0

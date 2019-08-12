@@ -48,16 +48,16 @@ public class WeaponGrabber : MonoBehaviour {
 
         // if there is an interactable that is the closest and within reach
         if( closestInteractable ) {
-            WeaponPickup pickup = closestInteractable.GetComponent<WeaponPickup>();
-
             closestInteractable.Interact();
+
+            WeaponPickup pickup = closestInteractable.GetComponent<WeaponPickup>();
             if( pickup ) {
                 pickup.Interact( weaponHeld, transform );
                 weaponHeld = pickup.transform;
                 Debug.Log( "Weapon Picked Up" );
+                //return pickup.GetComponent<Gun>();
             }
 
-            return pickup.GetComponent<Gun>();
         }
         else if( weaponHeld ) {
             WeaponPickup pickup = weaponHeld.GetComponent<WeaponPickup>();
@@ -65,7 +65,7 @@ public class WeaponGrabber : MonoBehaviour {
             weaponHeld = null;
         }
 
-        return null;
+        return weaponHeld.GetComponent<Gun>();
     }
 
     private void OnTriggerEnter2D( Collider2D collision ) {
