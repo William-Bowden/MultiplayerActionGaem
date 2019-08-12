@@ -7,6 +7,7 @@ public class WeaponPickup : Interactable {
     public float pickupRadius = 1.0f;
 
     Gun gun;
+    [SerializeField]
     Transform origParent;
 
     float maxRemovalTimer = 5.0f;
@@ -44,6 +45,10 @@ public class WeaponPickup : Interactable {
         numCollisions = 0;
         Available = newAvailability;
         TogglePhysics( newAvailability );
+
+        if( newAvailability ) {
+            transform.SetParent( origParent );
+        }
     }
 
     Rigidbody2D rb;
@@ -54,6 +59,9 @@ public class WeaponPickup : Interactable {
         colliders = GetComponents<Collider2D>();
         gun = GetComponent<Gun>();
         removalTimer = maxRemovalTimer;
+    }
+
+    private void Start() {
         origParent = transform.parent;
     }
 
@@ -81,8 +89,8 @@ public class WeaponPickup : Interactable {
     }
 
     public void Interact( Transform weaponHeld, Transform newParent ) {
-        base.Interact();
-        Debug.Log( "interaction with a weapon: " + gameObject.name );
+        base.Interact( newParent );
+
         if( !weaponHeld ) {
             // pick it up
             SetAvailability( false );
@@ -94,10 +102,6 @@ public class WeaponPickup : Interactable {
             onStand = false;
 
             transform.rotation = newParent.rotation;
-        }
-        else {
-            SetAvailability( true );
-            transform.SetParent( origParent );
         }
     }
 

@@ -11,8 +11,8 @@ public class Interactable : MonoBehaviour {
         col = GetComponent<Collider2D>();
     }
 
-    public virtual void Interact() {
-        Debug.Log( gameObject.name + " was interacted with" );
+    public virtual void Interact( Transform interactor ) {
+        Debug.Log( gameObject.name + " was interacted with by " + interactor );
     }
 
 }

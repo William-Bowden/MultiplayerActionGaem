@@ -31,9 +31,11 @@ public class WeaponGrabber : MonoBehaviour {
                     continue;
                 }
 
-                // if already holding a weapon, closest interactable isn't a weapon, but the current is
-                if( weaponHeld && !closestInteractable.GetComponent<WeaponPickup>() ) {
-                    continue;
+                if( closestInteractable ) {
+                    // if already holding a weapon, closest interactable isn't a weapon
+                    if( weaponHeld && closestInteractable.GetComponent<WeaponPickup>() == null ) {
+                        continue;
+                    }
                 }
             }
 
@@ -48,14 +50,19 @@ public class WeaponGrabber : MonoBehaviour {
 
         // if there is an interactable that is the closest and within reach
         if( closestInteractable ) {
-            closestInteractable.Interact();
+            closestInteractable.Interact( transform );
 
             WeaponPickup pickup = closestInteractable.GetComponent<WeaponPickup>();
             if( pickup ) {
-                pickup.Interact( weaponHeld, transform );
-                weaponHeld = pickup.transform;
-                Debug.Log( "Weapon Picked Up" );
-                //return pickup.GetComponent<Gun>();
+                if( weaponHeld ) {
+                    WeaponPickup currentWeapon = weaponHeld.GetComponent<WeaponPickup>();
+                    currentWeapon.SetAvailability( true );
+                    weaponHeld = null;
+                }
+                else {
+                    pickup.Interact( weaponHeld, transform );
+                    weaponHeld = pickup.transform;
+                }
             }
 
         }
@@ -65,7 +72,12 @@ public class WeaponGrabber : MonoBehaviour {
             weaponHeld = null;
         }
 
-        return weaponHeld.GetComponent<Gun>();
+        if( weaponHeld ) {
+            return weaponHeld.GetComponent<Gun>();
+        }
+        else {
+            return null;
+        }
     }
 
     private void OnTriggerEnter2D( Collider2D collision ) {

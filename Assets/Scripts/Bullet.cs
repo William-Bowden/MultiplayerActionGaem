@@ -85,17 +85,6 @@ public class Bullet : MonoBehaviour {
         if( lifeTimer <= 0 ) {
             Destroy( gameObject );
         }
-
-        //// grab the difference between the bullet position and it's future position position (normalized)
-        //Vector3 difference = ( ( transform.position + new Vector3( rb.velocity.x, rb.velocity.y ) ) - transform.position ).normalized;
-
-        //// calculate the rotation angle (face the direction in which it is moving)
-        //float zRot = Mathf.Atan2( difference.y, difference.x ) * Mathf.Rad2Deg;
-
-        //if( Mathf.Abs( rb.velocity.magnitude ) > 2 ) {
-        //    // rotate the arm
-        //    transform.rotation = Quaternion.Euler( 0f, 0f, zRot );
-        //}
     }
 
     private void LateUpdate() {

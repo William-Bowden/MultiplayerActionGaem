@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8083276432512166065}
   - component: {fileID: 8083276432512166078}
   - component: {fileID: 8083276432512166079}
+  - component: {fileID: 8699734969762397883}
   m_Layer: 18
   m_Name: door_Closed
   m_TagString: Untagged
@@ -104,7 +105,33 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.11904762, y: 1}
+  m_Size: {x: 0.36, y: 1}
+  m_EdgeRadius: 0
+--- !u!61 &8699734969762397883
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8083276432512166064}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.11904762, y: 1}
+    newSize: {x: 0.11904762, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.4, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &8083276432687293067
 GameObject:
@@ -196,6 +223,7 @@ GameObject:
   - component: {fileID: 8083276433338576124}
   - component: {fileID: 8083276433338576127}
   - component: {fileID: 8083276433338576126}
+  - component: {fileID: 1995626876}
   m_Layer: 17
   m_Name: Door
   m_TagString: Untagged
@@ -211,7 +239,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8083276433338576113}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: -6.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8083276432512166065}
@@ -232,6 +260,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   open: 0
+  doorOpenSounds:
+  - {fileID: 8300000, guid: f37a6330ddc2210418a41fcbdc9cc3cf, type: 3}
+  - {fileID: 8300000, guid: 0f1d4a116a064d24699181548899f73a, type: 3}
+  - {fileID: 8300000, guid: d9ff90e5f30498748bbf1b8f5bdd35f0, type: 3}
+  - {fileID: 8300000, guid: ac7cc46ebde861f45a7a5e7f4ab87c69, type: 3}
+  doorCloseSounds:
+  - {fileID: 8300000, guid: c045cf317a7868648b0e7339d8bfdfdf, type: 3}
+  - {fileID: 8300000, guid: 9cdbfce60d1d92b43b76a6fd21e6d345, type: 3}
+  - {fileID: 8300000, guid: 8699cadbee9cee64293ec6c669442f84, type: 3}
+  - {fileID: 8300000, guid: feebe9437620267428b5a8410a723005, type: 3}
 --- !u!61 &8083276433338576126
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -258,3 +296,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.25}
   m_EdgeRadius: 0
+--- !u!114 &1995626876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8083276433338576113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c12378ad7a1ebc440a4f63f26b4b8363, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 120
+  maxHealth: 0
+  onDeathParticles:
+  - {fileID: 477631860813595833, guid: 6ef3b8e27054dfd4bab244c6ceac4840, type: 3}
+  onDeathNoises:
+  - {fileID: 8300000, guid: 35f4da93b668f08469c699287173128b, type: 3}
+  - {fileID: 8300000, guid: e350dfa7bb79b2c419ece161859ab95c, type: 3}
+  - {fileID: 8300000, guid: 030089ee991a28a45a6bf99c8439a6f6, type: 3}
+  - {fileID: 8300000, guid: c8528d626c941d246acf0d808fcb1705, type: 3}
+  dieOnStomped: 0
+  isDead: 0
