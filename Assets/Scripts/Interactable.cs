@@ -12,7 +12,7 @@ public class Interactable : MonoBehaviour {
     }
 
     public virtual void Interact( Transform interactor ) {
-        Debug.Log( gameObject.name + " was interacted with by " + interactor );
+        
     }
 
 }

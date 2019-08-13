@@ -9,10 +9,14 @@ public class PlayerHandler : MonoBehaviour {
     int playerNumber = 0;
 
     void OnPlayerJoined( PlayerInput input ) {
-        Vector3 pos = startPositions[ Random.Range( 0, startPositions.Count ) ];
-        input.transform.root.position = pos;
 
-        startPositions.Remove( pos );
+        if( input.GetComponent<Character>() ) {
+            Vector3 pos = startPositions[ Random.Range( 0, startPositions.Count - 1 ) ];
+            input.transform.root.position = pos;
+
+            startPositions.Remove( pos );
+        }
+
     }
 
     private void OnDrawGizmosSelected() {

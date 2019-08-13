@@ -166,7 +166,7 @@ Rigidbody2D:
   m_Material: {fileID: 6200000, guid: 26e7b98f416fac649a64c3e8badffeaa, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!61 &3661487810353502275
 BoxCollider2D:
@@ -223,6 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupRadius: 1.25
+  origParent: {fileID: 0}
   triggerable: 1
   maxShootTimer: 0.1
   onStand: 0
@@ -243,6 +244,7 @@ MonoBehaviour:
   currentAmmo: 0
   weaponAccuracy: 0.6
   fireRate: 0.05
+  shootTimer: 0
   muzzle: {fileID: 3661487810194517942}
   muzzleFlash: {fileID: 3317119925387776245}
   bulletPrefab: {fileID: 5363642494251245571, guid: 0ace1c6787e1c3d468e5c70f0a0af62f,

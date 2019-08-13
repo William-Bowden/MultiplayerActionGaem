@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3654914569202907019}
   - component: {fileID: 3654914569202907021}
   - component: {fileID: 3654914569202907022}
+  - component: {fileID: 6990243963253037469}
   m_Layer: 0
   m_Name: Chest_Gold
   m_TagString: Untagged
@@ -167,3 +168,16 @@ MonoBehaviour:
   - {fileID: 3661487810353502273, guid: 3839591be85c5c84cb071d1282f188db, type: 3}
   - {fileID: 3661487810353502273, guid: 2fd2b4e184ec9fe4aba2df3f2c048dec, type: 3}
   goRotation: {x: 0, y: 0, z: 0}
+--- !u!114 &6990243963253037469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3654914569202907017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad8a19287b99d094bbb96b761f2f78a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 50

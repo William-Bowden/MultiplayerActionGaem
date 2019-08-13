@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3654914569202907019}
   - component: {fileID: 3654914569202907021}
   - component: {fileID: 3654914569202907022}
+  - component: {fileID: 7055298029854927832}
   m_Layer: 0
   m_Name: Chest_Standard
   m_TagString: Untagged
@@ -167,3 +168,16 @@ MonoBehaviour:
   - {fileID: 3661487810353502273, guid: 589fb1edb2801bf46adb60183e1a4c3e, type: 3}
   - {fileID: 3661487810353502273, guid: d669698db39cc874ca51dfd973511c35, type: 3}
   goRotation: {x: 0, y: 0, z: 0}
+--- !u!114 &7055298029854927832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3654914569202907017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad8a19287b99d094bbb96b761f2f78a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 50

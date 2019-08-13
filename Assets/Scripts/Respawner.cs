@@ -20,6 +20,8 @@ public class Respawner : MonoBehaviour {
             stopwatch -= Time.deltaTime;
 
             if( stopwatch <= 0 ) {
+                go.transform.localPosition = Vector3.zero;
+                go.transform.rotation = Quaternion.identity;
                 go.SetActive( true );
                 stopwatch = spawnTimer;
             }

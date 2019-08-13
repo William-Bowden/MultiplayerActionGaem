@@ -7,6 +7,8 @@ using UnityEngine.InputSystem.PlayerInput;
 public class TargetGroupManager : MonoBehaviour {
 
     [SerializeField] CinemachineTargetGroup tg = null;
+    [SerializeField] Transform ball;
+    bool trackingBall = false;
 
     int playerCount = 0;
     float camTimer = 0;
@@ -20,11 +22,18 @@ public class TargetGroupManager : MonoBehaviour {
             tg = GameObject.Find( "TargetGroup1" ).GetComponent<CinemachineTargetGroup>();
         }
 
+        if( !ball ) {
+            GameObject go = GameObject.Find( "BeachBall" );
+            if( go ) {
+                ball = go.transform;
+            }
+        }
+
         maxTimer = 6.0f / ( tg.m_Targets.Length - 1 );
     }
 
     private void Update() {
-        if( playerCount <= 0 ) {
+        if( playerCount <= 0 && !trackingBall ) {
             camTimer += Time.deltaTime;
 
             if( camTimer >= maxTimer ) {
@@ -42,34 +51,34 @@ public class TargetGroupManager : MonoBehaviour {
                 tg.m_Targets[ prevPriority ].weight = Mathf.Lerp( tg.m_Targets[ prevPriority ].weight, 1, maxTimer / 50.0f );
             }
         }
-        else {
-            // whoa! this is probably pretty expensive. 
-            // maybe instead, access playerCount from the player dying
-            foreach( CinemachineTargetGroup.Target target in tg.m_Targets ) {
-                Damageable damagable = target.target.GetComponent<Damageable>();
+    }
 
-                if( damagable.isDead ) {
-                    tg.RemoveMember( target.target.transform );
-                    playerCount--;
-                }
-            }
-        }
+    public void Remove( Transform transformToRemove ) {
+        tg.RemoveMember( transformToRemove );
+        playerCount--;
     }
 
     void OnPlayerJoined( PlayerInput input ) {
 
-        Transform member = input.transform.root;
+        if( input.GetComponent<Character>() ) {
+            Transform member = input.transform.root;
 
-        foreach( CinemachineTargetGroup.Target target in tg.m_Targets ) {
-            if( playerCount <= 0 ) {
-                tg.RemoveMember( target.target.transform );
+            if( playerCount <= 0 && !trackingBall ) {
+                foreach( CinemachineTargetGroup.Target target in tg.m_Targets ) {
+                    tg.RemoveMember( target.target.transform );
+                    if( target.target.transform == member ) {
+                        return;
+                    }
+                }
             }
-            if( target.target.transform == member ) {
-                return;
+
+            if( !trackingBall && ball ) {
+                tg.AddMember( ball, 1, 5 );
+                trackingBall = true;
             }
+
+            tg.AddMember( member, 1, 5 );
+            playerCount++;
         }
-
-        tg.AddMember( member, 1, 5 );
-        playerCount++;
     }
 }

@@ -267,6 +267,7 @@ GameObject:
   - component: {fileID: 114405106559726604}
   - component: {fileID: 773281867}
   - component: {fileID: 665605830467471379}
+  - component: {fileID: 4507842276996651394}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -344,7 +345,7 @@ MonoBehaviour:
   groundcheck: {fileID: 4248356302021384}
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 2817
+    m_Bits: 133889
   jumpForce: 1000
   puff: {fileID: 0}
   jumpSound: {fileID: 8300000, guid: 885a17b2addc06d4eb14c5151998db59, type: 3}
@@ -401,6 +402,20 @@ MonoBehaviour:
   onDeathNoises: []
   dieOnStomped: 1
   isDead: 0
+--- !u!114 &4507842276996651394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458081462656572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad8a19287b99d094bbb96b761f2f78a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 50
+  kill: 1
 --- !u!1 &1820254087460554
 GameObject:
   m_ObjectHideFlags: 0
