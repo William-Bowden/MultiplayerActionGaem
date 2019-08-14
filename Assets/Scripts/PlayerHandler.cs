@@ -8,13 +8,29 @@ public class PlayerHandler : MonoBehaviour {
 
     int playerNumber = 0;
 
+    [SerializeField]
+    bool noReuse = true;
+
     void OnPlayerJoined( PlayerInput input ) {
 
         if( input.GetComponent<Character>() ) {
-            Vector3 pos = startPositions[ Random.Range( 0, startPositions.Count - 1 ) ];
-            input.transform.root.position = pos;
 
-            startPositions.Remove( pos );
+            Vector3 pos = Vector3.zero;
+
+            Debug.Log( playerNumber % startPositions.Count );
+
+            if( noReuse ) {
+                pos = startPositions[ Random.Range( 0, startPositions.Count - 1 ) ];
+                startPositions.Remove( pos );
+            }
+            else {
+                pos = startPositions[ playerNumber % startPositions.Count ];
+
+            }
+
+            input.transform.root.position = pos;
+            playerNumber++;
+
         }
 
     }

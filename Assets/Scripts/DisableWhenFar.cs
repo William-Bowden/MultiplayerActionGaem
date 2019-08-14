@@ -5,7 +5,7 @@ using UnityEngine;
 public class DisableWhenFar : MonoBehaviour {
 
     [SerializeField]
-    float maxDistance = 50.0f;
+    protected float maxDistance = 50.0f;
 
     [SerializeField]
     bool kill;
