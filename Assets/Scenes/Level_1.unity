@@ -1039,7 +1039,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd13e0946a519bd44acbd7c3ac82b3a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnTimer: 5
+  spawnTimer: 20
   stopwatch: 0
 --- !u!4 &488507813
 Transform:
@@ -1663,7 +1663,7 @@ Transform:
   - {fileID: 755136839}
   - {fileID: 1809219475}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &980988051 stripped
 Transform:
@@ -1712,7 +1712,7 @@ Transform:
   - {fileID: 921460240}
   - {fileID: 1191548725}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1137550211 stripped
 Transform:
@@ -2029,6 +2029,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -16.1
       objectReference: {fileID: 0}
+    - target: {fileID: 7737809012356458315, guid: 61a5ddbb4915f8644ab14e5ec29283fe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9041327753094365727, guid: 61a5ddbb4915f8644ab14e5ec29283fe,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2038,11 +2043,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7737809012356458315, guid: 61a5ddbb4915f8644ab14e5ec29283fe,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9041327754158301492, guid: 61a5ddbb4915f8644ab14e5ec29283fe,
         type: 3}
@@ -14927,7 +14927,7 @@ PrefabInstance:
     - target: {fileID: 8143266647421681796, guid: 8961c52d2c424344abaf04e3900c1810,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8143266647421681796, guid: 8961c52d2c424344abaf04e3900c1810,
         type: 3}

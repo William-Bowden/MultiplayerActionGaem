@@ -17,8 +17,6 @@ public class PlayerHandler : MonoBehaviour {
 
             Vector3 pos = Vector3.zero;
 
-            Debug.Log( playerNumber % startPositions.Count );
-
             if( noReuse ) {
                 pos = startPositions[ Random.Range( 0, startPositions.Count - 1 ) ];
                 startPositions.Remove( pos );

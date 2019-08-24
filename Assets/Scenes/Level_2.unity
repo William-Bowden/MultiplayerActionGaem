@@ -910,7 +910,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd13e0946a519bd44acbd7c3ac82b3a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnTimer: 20
+  spawnTimer: 45
   stopwatch: 0
 --- !u!1 &755136838
 GameObject:
@@ -1125,7 +1125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd13e0946a519bd44acbd7c3ac82b3a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnTimer: 20
+  spawnTimer: 45
   stopwatch: 0
 --- !u!1 &1067556322
 GameObject:
@@ -1389,6 +1389,7 @@ MonoBehaviour:
   - {x: 8, y: 13.5, z: 0}
   - {x: -14, y: 13.5, z: 0}
   - {x: -6, y: -1.5, z: 0}
+  noReuse: 1
 --- !u!114 &1214291054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1402,6 +1403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tg: {fileID: 2138266277}
+  ball: {fileID: 0}
 --- !u!1 &1298058386
 GameObject:
   m_ObjectHideFlags: 0
