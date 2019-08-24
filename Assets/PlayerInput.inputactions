@@ -112,6 +112,39 @@
                 },
                 {
                     "name": "",
+                    "id": "fd312782-8fc4-431c-94fb-52a3bb94eadf",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6862653a-58b4-41e0-be92-019e563e04a4",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f39cd485-1ec2-4a36-8977-73a717ad2500",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "a28b54b5-7d7e-4585-852b-3728d40aa9a3",
                     "path": "<Gamepad>/start",
                     "interactions": "",
