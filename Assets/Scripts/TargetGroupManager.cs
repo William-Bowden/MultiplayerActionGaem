@@ -45,10 +45,12 @@ public class TargetGroupManager : MonoBehaviour {
                 camTimer = 0;
             }
 
-            tg.m_Targets[ camPriority ].weight = Mathf.Lerp( tg.m_Targets[ camPriority ].weight, 10, maxTimer / 10.0f );
+            if( tg.m_Targets.Length > 0 ) {
+                tg.m_Targets[ camPriority ].weight = Mathf.Lerp( tg.m_Targets[ camPriority ].weight, 10, maxTimer / 10.0f );
 
-            if( prevPriority != camPriority ) {
-                tg.m_Targets[ prevPriority ].weight = Mathf.Lerp( tg.m_Targets[ prevPriority ].weight, 1, maxTimer / 50.0f );
+                if( prevPriority != camPriority ) {
+                    tg.m_Targets[ prevPriority ].weight = Mathf.Lerp( tg.m_Targets[ prevPriority ].weight, 1, maxTimer / 50.0f );
+                }
             }
         }
     }
