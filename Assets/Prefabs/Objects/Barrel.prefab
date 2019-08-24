@@ -170,6 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDistance: 50
+  kill: 0
 --- !u!1 &7520893705284173732
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,7 +183,7 @@ GameObject:
   - component: {fileID: 2574698305429974150}
   - component: {fileID: 1284945708033717292}
   m_Layer: 17
-  m_Name: Containter
+  m_Name: Pushable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

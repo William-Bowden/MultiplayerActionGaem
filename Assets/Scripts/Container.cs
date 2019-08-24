@@ -36,7 +36,13 @@ public class Container : Damageable {
         else {
             foreach( GameObject go in whatToDrop ) {
                 if( go ) {
-                    gameObjects.Add( Instantiate( go, transform.position, Quaternion.Euler( goRotation ) ) );
+                    GameObject dropped = Instantiate( go, transform.position, Quaternion.Euler( goRotation ) );
+                    gameObjects.Add( dropped );
+
+                    Bullet bullet = dropped.GetComponent<Bullet>();
+                    if( bullet ) {
+                        Destroy( dropped );
+                    }
                 }
             }
         }
