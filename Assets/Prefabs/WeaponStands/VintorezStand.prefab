@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1163800453518720248}
   - component: {fileID: 1163800453518720249}
   m_Layer: 16
-  m_Name: AWPStand
+  m_Name: VintorezStand
   m_TagString: Untagged
-  m_Icon: {fileID: 2800000, guid: c66dc47ddf2263a44beb1fde1ce3532b, type: 3}
+  m_Icon: {fileID: 2800000, guid: bfa5568b2ccae5d48944a24c5a86da8f, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -28,7 +28,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2766533369964995824}
+  - {fileID: 6566476856742529683}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -44,14 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b30a7d4056a79044eb0890c5e3f07c4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 3661487810353502273, guid: 95e1647e89f90e440b16c6047ce8a75f,
+  weaponPrefab: {fileID: 3661487810353502273, guid: 1b436b331e16c1d4281fcdbf88afedf0,
     type: 3}
   weaponPool: []
   hasWeapon: 0
   spawnAtStart: 1
-  spawnRate: 18
+  spawnRate: 14
   spawnTimer: 0
---- !u!1001 &2863143405921093044
+--- !u!1001 &6557119399233104855
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -120,9 +120,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 744879ecb3b6a99438cdd6e7b71f790e, type: 3}
---- !u!4 &2766533369964995824 stripped
+--- !u!4 &6566476856742529683 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 134930637456597316, guid: 744879ecb3b6a99438cdd6e7b71f790e,
     type: 3}
-  m_PrefabInstance: {fileID: 2863143405921093044}
+  m_PrefabInstance: {fileID: 6557119399233104855}
   m_PrefabAsset: {fileID: 0}

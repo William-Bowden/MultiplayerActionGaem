@@ -49,7 +49,7 @@ MonoBehaviour:
   weaponPool: []
   hasWeapon: 0
   spawnAtStart: 1
-  spawnRate: 8
+  spawnRate: 12
   spawnTimer: 0
 --- !u!1001 &6557119399233104855
 PrefabInstance:

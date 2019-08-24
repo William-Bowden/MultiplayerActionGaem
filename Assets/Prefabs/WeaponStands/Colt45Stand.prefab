@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1163800453518720250
+--- !u!1 &8024207232317899351
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,55 +8,55 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1163800453518720248}
-  - component: {fileID: 1163800453518720249}
+  - component: {fileID: 8024207232317899349}
+  - component: {fileID: 8024207232317899338}
   m_Layer: 16
-  m_Name: AWPStand
+  m_Name: Colt45Stand
   m_TagString: Untagged
-  m_Icon: {fileID: 2800000, guid: c66dc47ddf2263a44beb1fde1ce3532b, type: 3}
+  m_Icon: {fileID: 2800000, guid: aaa40baccbce36147a4eb095d2011f5a, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1163800453518720248
+--- !u!4 &8024207232317899349
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1163800453518720250}
+  m_GameObject: {fileID: 8024207232317899351}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2766533369964995824}
+  - {fileID: 2827946942760687431}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1163800453518720249
+--- !u!114 &8024207232317899338
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1163800453518720250}
+  m_GameObject: {fileID: 8024207232317899351}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b30a7d4056a79044eb0890c5e3f07c4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 3661487810353502273, guid: 95e1647e89f90e440b16c6047ce8a75f,
+  weaponPrefab: {fileID: 9214301058071448184, guid: c727f7b1733f7a441a7f2a3a56bf0efe,
     type: 3}
   weaponPool: []
   hasWeapon: 0
   spawnAtStart: 1
-  spawnRate: 18
+  spawnRate: 5
   spawnTimer: 0
---- !u!1001 &2863143405921093044
+--- !u!1001 &2801727640141952515
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1163800453518720248}
+    m_TransformParent: {fileID: 8024207232317899349}
     m_Modifications:
     - target: {fileID: 134930637456597317, guid: 744879ecb3b6a99438cdd6e7b71f790e,
         type: 3}
@@ -120,9 +120,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 744879ecb3b6a99438cdd6e7b71f790e, type: 3}
---- !u!4 &2766533369964995824 stripped
+--- !u!4 &2827946942760687431 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 134930637456597316, guid: 744879ecb3b6a99438cdd6e7b71f790e,
     type: 3}
-  m_PrefabInstance: {fileID: 2863143405921093044}
+  m_PrefabInstance: {fileID: 2801727640141952515}
   m_PrefabAsset: {fileID: 0}
