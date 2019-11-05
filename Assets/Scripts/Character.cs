@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.InputSystem.PlayerInput;
 using UnityEngine.UI;
 
-public class Character : MonoBehaviour {
+public class Character : MonoBehaviour
+{
 
     Vector2 move;
     [SerializeField] float maxSpeed = 10.0f;
@@ -25,6 +26,9 @@ public class Character : MonoBehaviour {
     Rigidbody2D rb;
 
     Damageable dmg;
+
+    float deadTimer;
+    float spawnTimer = 3.0f;
 
     bool attacking = false;
     [SerializeField]
@@ -53,6 +57,19 @@ public class Character : MonoBehaviour {
         jumpGrav = rb.gravityScale;
     }
 
+    private void Update() {
+        if( !canInput ) {
+            deadTimer += Time.deltaTime;
+
+            if( deadTimer >= spawnTimer ) {
+                canInput = true;
+                deadTimer = 0;
+                dmg.Replenish();
+                anim.SetBool( "Dead", false );
+            }
+        }
+    }
+
     // Update is called once per frame
     void FixedUpdate() {
         if( !canInput ) {
@@ -61,9 +78,6 @@ public class Character : MonoBehaviour {
             }
             anim.SetBool( "Dead", true );
             move = Vector2.zero;
-        }
-        else {
-            anim.SetBool( "Dead", false );
         }
 
         grounded = Physics2D.OverlapCircle( groundcheck.position, groundRadius, whatIsGround );
