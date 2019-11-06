@@ -4,12 +4,14 @@ using UnityEngine;
 using Cinemachine;
 using UnityEngine.InputSystem.PlayerInput;
 
-public class TargetGroupManager : MonoBehaviour {
+public class TargetGroupManager : MonoBehaviour
+{
 
     [SerializeField] CinemachineTargetGroup tg = null;
     [SerializeField] Transform ball;
     bool trackingBall = false;
 
+    [SerializeField]
     int playerCount = 0;
     float camTimer = 0;
     float maxTimer = 3.0f;
@@ -55,9 +57,15 @@ public class TargetGroupManager : MonoBehaviour {
         }
     }
 
+    public void Add( Transform transformToAdd ) {
+        tg.AddMember( transformToAdd, 1, 5 );
+        playerCount++;
+    }
+
     public void Remove( Transform transformToRemove ) {
+        if( tg.FindMember( transformToRemove ) >= 0 )
+            playerCount--;
         tg.RemoveMember( transformToRemove );
-        playerCount--;
     }
 
     void OnPlayerJoined( PlayerInput input ) {

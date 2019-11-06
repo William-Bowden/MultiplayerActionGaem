@@ -80,7 +80,7 @@ public class Damageable : MonoBehaviour {
     }
 
     // replenishes health back to maxHealth
-    public void Replenish() {
+    public virtual void Replenish() {
         health = maxHealth;
         if( sr ) {
             Color temp = sr.color;

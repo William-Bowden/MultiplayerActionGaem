@@ -14,6 +14,14 @@ public class PlayerDamageable : Damageable {
         character = GetComponent<Character>();
     }
 
+    public override void Replenish() {
+        base.Replenish();
+
+        if( tgm ) {
+            tgm.Add( transform );
+        }
+    }
+
     protected override void Die() {
         DeathEffects();
         isDead = true;

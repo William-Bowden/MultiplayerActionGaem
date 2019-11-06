@@ -341,12 +341,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2b02d0df8be6e440835e6aa5da2970f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ph: {fileID: 0}
   maxSpeed: 12.5
   groundcheck: {fileID: 4248356302021384}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 133889
   jumpForce: 1000
+  maxCoyote: 0.1
   puff: {fileID: 0}
   jumpSound: {fileID: 8300000, guid: 885a17b2addc06d4eb14c5151998db59, type: 3}
   landingSound: {fileID: 8300000, guid: b941562528767f54db4882f65de8473f, type: 3}

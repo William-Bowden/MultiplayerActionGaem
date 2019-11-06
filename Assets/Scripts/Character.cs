@@ -7,15 +7,19 @@ using UnityEngine.UI;
 public class Character : MonoBehaviour
 {
 
+    [SerializeField] PlayerHandler ph;
     Vector2 move;
     [SerializeField] float maxSpeed = 10.0f;
     [SerializeField] Transform groundcheck;
     [SerializeField] LayerMask whatIsGround;
     [SerializeField] float jumpForce = 1000;
+    float coyoteTime;
+    [SerializeField] float maxCoyote = 0.3f;
     [SerializeField] GameObject puff;
     [SerializeField] AudioClip jumpSound;
     [SerializeField] AudioClip landingSound;
 
+    bool canSpawn = false;
     public bool canInput = false;
 
     WeaponGrabber grabber;
@@ -54,19 +58,22 @@ public class Character : MonoBehaviour
         grabber = transform.GetChild( 2 ).GetChild( 0 ).GetComponent<WeaponGrabber>();
         anim.SetBool( "Dead", false );
 
+        coyoteTime = maxCoyote;
+
         jumpGrav = rb.gravityScale;
     }
 
     private void Update() {
-        if( !canInput ) {
+        if( dmg.isDead ) {
             deadTimer += Time.deltaTime;
 
             if( deadTimer >= spawnTimer ) {
-                canInput = true;
-                deadTimer = 0;
-                dmg.Replenish();
-                anim.SetBool( "Dead", false );
+                canSpawn = true;
             }
+        }
+
+        if( !grounded && coyoteTime >= 0 ) {
+            coyoteTime -= Time.deltaTime;
         }
     }
 
@@ -85,6 +92,7 @@ public class Character : MonoBehaviour
 
         if( grounded ) {
             rb.gravityScale = jumpGrav;
+            coyoteTime = maxCoyote;
         }
 
         Move();
@@ -92,6 +100,22 @@ public class Character : MonoBehaviour
 
         anim.SetFloat( "vSpeed", rb.velocity.y );
         anim.SetFloat( "Speed", Mathf.Abs( move.x ) );
+    }
+
+    public void SetPlayerHandler( PlayerHandler playerHandler ) {
+        ph = playerHandler;
+    }
+
+    void Respawn() {
+        canInput = true;
+        canSpawn = false;
+        attacking = false;
+        deadTimer = 0;
+        dmg.Replenish();
+        anim.SetBool( "Dead", false );
+        anim.SetBool( "Ground", true );
+
+        transform.position = ph.GetRandSpawnPos();
     }
 
     void OnMove( InputValue value ) {
@@ -109,12 +133,19 @@ public class Character : MonoBehaviour
                 gameObject.layer = origLayer;
             }
         }
+        else if( canSpawn ) {
+            Respawn();
+        }
     }
     void OnJump() {
-        if( canInput && grounded ) {
+        if( canInput && ( grounded || coyoteTime > 0 ) ) {
             anim.SetBool( "Ground", false );
             rb.velocity = new Vector2( rb.velocity.x, 0 );
             rb.AddForce( new Vector2( 0, jumpForce ) );
+            coyoteTime = 0;
+        }
+        else if( canSpawn ) {
+            Respawn();
         }
     }
     void OnJumpRelease() {
@@ -126,10 +157,16 @@ public class Character : MonoBehaviour
             }
             rb.gravityScale = fallGrav;
         }
+        else if( canSpawn ) {
+            Respawn();
+        }
     }
     void OnShoot() {
         if( canInput ) {
             attacking = !attacking;
+        }
+        else if( canSpawn ) {
+            Respawn();
         }
     }
     void OnInteract() {
@@ -151,6 +188,9 @@ public class Character : MonoBehaviour
             if( attacking && gun ) {
                 gun.Shoot();
             }
+        }
+        else if( canSpawn ) {
+            Respawn();
         }
     }
 

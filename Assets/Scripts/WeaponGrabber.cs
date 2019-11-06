@@ -21,7 +21,7 @@ public class WeaponGrabber : MonoBehaviour {
         float shortestDistance = 0.0f;
 
         foreach( Interactable interactable in interactables ) {
-            WeaponPickup weapon = interactable.GetComponent<WeaponPickup>();
+            WeaponPickup weapon = interactable?.GetComponent<WeaponPickup>();
 
             float dist = Mathf.Abs( ( transform.parent.position - interactable.transform.position ).magnitude );
 
