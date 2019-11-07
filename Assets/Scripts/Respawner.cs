@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Respawner : MonoBehaviour {
+public class Respawner : MonoBehaviour
+{
 
     public float spawnTimer = 1.0f;
     public float stopwatch = 0.0f;
@@ -24,11 +25,10 @@ public class Respawner : MonoBehaviour {
                 go.transform.rotation = Quaternion.identity;
                 go.SetActive( true );
                 stopwatch = spawnTimer;
-            }
 
-            Damageable damageable = go.GetComponent<Damageable>();
-            if( damageable ) {
-                damageable.Replenish();
+                Damageable damageable = go.GetComponent<Damageable>();
+                damageable?.Replenish();
+                damageable?.Revive();
             }
         }
     }

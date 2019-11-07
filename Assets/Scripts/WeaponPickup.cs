@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponPickup : Interactable {
+public class WeaponPickup : Interactable
+{
 
     public float pickupRadius = 1.0f;
 
     Gun gun;
     [SerializeField]
     Transform origParent;
+
+    SpriteRenderer sr;
 
     float maxRemovalTimer = 5.0f;
     float removalTimer = 5.0f;
@@ -58,6 +61,7 @@ public class WeaponPickup : Interactable {
         rb = GetComponent<Rigidbody2D>();
         colliders = GetComponents<Collider2D>();
         gun = GetComponent<Gun>();
+        sr = transform.GetChild( 0 ).GetComponent<SpriteRenderer>();
         removalTimer = maxRemovalTimer;
     }
 
@@ -91,7 +95,7 @@ public class WeaponPickup : Interactable {
     public void Interact( Transform weaponHeld, Transform newParent ) {
         base.Interact( newParent );
 
-        if( !weaponHeld ) {
+        if( !weaponHeld && gun.currentAmmo > 0 ) {
             // pick it up
             SetAvailability( false );
             transform.SetParent( newParent );
@@ -109,13 +113,19 @@ public class WeaponPickup : Interactable {
         rb.bodyType = RigidbodyType2D.Dynamic;
         if( !physics ) {
             rb.velocity = Vector2.zero;
+            ResetColor();
         }
         gun.enabled = !physics;
         rb.simulated = physics;
+
         if( physics ) {
             Vector3 dir = ( transform.parent.position - transform.parent.parent.position ).normalized;
             rb.AddForce( dir * 500.0f );
             gun.muzzleFlash.enabled = false;
+
+            if( gun.currentAmmo <= 0 ) {
+                SetEmptyColor();
+            }
         }
         foreach( Collider2D col in colliders ) {
             col.enabled = physics;
@@ -130,8 +140,27 @@ public class WeaponPickup : Interactable {
 
         gameObject.SetActive( false );
         gun.Reload();
+        ResetColor();
         shootTimer = 0;
         removalTimer = maxRemovalTimer;
+    }
+
+    void SetEmptyColor() {
+        Color temp = sr.color;
+        temp.r = 1.0f;
+        temp.g = 0.0f;
+        temp.b = 0.0f;
+        temp.a = 0.6f;
+        sr.color = temp;
+    }
+
+    void ResetColor() {
+        Color temp = sr.color;
+        temp.r = 1.0f;
+        temp.g = 1.0f;
+        temp.b = 1.0f;
+        temp.a = 1.0f;
+        sr.color = temp;
     }
 
     private void OnCollisionEnter2D( Collision2D collision ) {
@@ -139,10 +168,14 @@ public class WeaponPickup : Interactable {
             if( shootTimer <= 0 && numCollisions++ > 1 ) {
                 float hit = Mathf.Min( rb.velocity.magnitude / 6.0f, 1.0f );
 
-                //if( hit + Random.Range( 0.0f, 0.4f ) >= 0.75f ) {
-                if( true ) {
+                if( hit + Random.Range( 0.0f, 0.4f ) >= 0.75f ) {
                     gun.enabled = true;
                     gun.HitSurface();
+
+                    if( gun.currentAmmo <= 0 ) {
+                        SetEmptyColor();
+                    }
+
                     gun.muzzleFlash.enabled = false;
                     gun.enabled = false;
                 }

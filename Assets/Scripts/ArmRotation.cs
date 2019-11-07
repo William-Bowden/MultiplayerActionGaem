@@ -23,7 +23,7 @@ public class ArmRotation : MonoBehaviour {
     }
 
     void OnAim( InputValue value ) {
-        if( value.Get<Vector2>().magnitude > 0.5f ) {
+        if( value.Get<Vector2>().magnitude > 0.7f ) {
             aiming = value.Get<Vector2>();
         }
     }

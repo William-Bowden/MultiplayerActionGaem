@@ -157,16 +157,10 @@ public class Character : MonoBehaviour
             }
             rb.gravityScale = fallGrav;
         }
-        else if( canSpawn ) {
-            Respawn();
-        }
     }
     void OnShoot() {
         if( canInput ) {
             attacking = !attacking;
-        }
-        else if( canSpawn ) {
-            Respawn();
         }
     }
     void OnInteract() {
@@ -188,9 +182,6 @@ public class Character : MonoBehaviour
             if( attacking && gun ) {
                 gun.Shoot();
             }
-        }
-        else if( canSpawn ) {
-            Respawn();
         }
     }
 

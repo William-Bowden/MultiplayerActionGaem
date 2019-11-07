@@ -5,7 +5,7 @@ using UnityEngine;
 public class Damageable : MonoBehaviour {
     [SerializeField]
     float health;
-    [SerializeField]
+
     float maxHealth;
 
     public GameObject[] onDeathParticles;
@@ -118,7 +118,7 @@ public class Damageable : MonoBehaviour {
         }
     }
 
-    void Revive() {
+    public void Revive() {
         gameObject.SetActive( true );
         isDead = false;
         // add revival sounds/effects?
