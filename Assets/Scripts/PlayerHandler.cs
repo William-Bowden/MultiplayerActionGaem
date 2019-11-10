@@ -34,11 +34,10 @@ public class PlayerHandler : MonoBehaviour
             //}
             //else {
             //pos = startPositions[ playerNumber % startPositions.Count ];
-            pos = startPositions[ playerNumber ];
+            pos = startPositions[ playerNumber++ % startPositions.Count ];
             //}
 
             input.transform.root.position = pos;
-            playerNumber++;
         }
     }
 
