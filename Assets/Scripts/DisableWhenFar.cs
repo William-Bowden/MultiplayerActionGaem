@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DisableWhenFar : MonoBehaviour {
+public class DisableWhenFar : MonoBehaviour
+{
 
     [SerializeField]
     protected float maxDistance = 50.0f;
@@ -15,9 +16,12 @@ public class DisableWhenFar : MonoBehaviour {
         float distFromCenter = Mathf.Abs( ( transform.position - Vector3.zero ).magnitude );
 
         if( distFromCenter > maxDistance ) {
-            gameObject.SetActive( false );
             if( kill ) {
-                gameObject.GetComponent<Damageable>().TakeDamage( 1000 );
+                Damageable damageable = gameObject.GetComponent<Damageable>();
+                damageable.TakeDamage( 1000 );
+            }
+            else {
+                gameObject.SetActive( false );
             }
         }
     }

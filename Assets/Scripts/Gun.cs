@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Gun : MonoBehaviour {
 
+    SpriteRenderer sr;
+
     [Header( "Gun Attributes" )]
     [SerializeField]
     int maxAmmo = 0;
@@ -41,6 +43,7 @@ public class Gun : MonoBehaviour {
             muzzleFlash = muzzle.GetChild( 0 ).GetComponent<SpriteRenderer>();
         }
 
+        sr = transform.GetChild( 0 ).GetComponent<SpriteRenderer>();
         laserSight = GetComponent<LineRenderer>();
     }
 
@@ -96,7 +99,7 @@ public class Gun : MonoBehaviour {
                     }
                 }
 
-                // rotate the bullet to emulate weapon accuracy
+                // rotate the bullet to emulate weapon accuracy/recoil
                 // the longer the wait between shots, the more accurate the shot is
                 float timePast = 0;
                 if( recoilTimer > fireRate * 1.1f ) {
@@ -135,6 +138,10 @@ public class Gun : MonoBehaviour {
             GameObject smoke = Instantiate( muzzleSmokePrefab, muzzle.position + new Vector3( 0.02f, 0, 0 ), transform.rotation, muzzle );
 
             Destroy( smoke, 1f );
+
+            if( currentAmmo <= 0 ) {
+                SetEmptyColor();
+            }
         }
     }
 
@@ -144,6 +151,24 @@ public class Gun : MonoBehaviour {
 
     public void Reload() {
         currentAmmo = maxAmmo;
+    }
+
+    public void ResetColor() {
+        Color temp = sr.color;
+        temp.r = 1.0f;
+        temp.g = 1.0f;
+        temp.b = 1.0f;
+        temp.a = 1.0f;
+        sr.color = temp;
+    }
+
+    public void SetEmptyColor() {
+        Color temp = sr.color;
+        temp.r = 1.0f;
+        temp.g = 0.2f;
+        temp.b = 0.2f;
+        temp.a = 0.8f;
+        sr.color = temp;
     }
 
 }

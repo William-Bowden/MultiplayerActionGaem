@@ -44,7 +44,7 @@ public class Character : MonoBehaviour
     Animator anim;
 
     LayerMask origLayer;
-    LayerMask ignorePlats;
+    LayerMask ignorePlats = 14;
 
     // Use this for initialization
     void Start() {
@@ -54,7 +54,6 @@ public class Character : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         dmg = GetComponent<Damageable>();
         origLayer = gameObject.layer;
-        ignorePlats = 14;
         grabber = transform.GetChild( 2 ).GetChild( 0 ).GetComponent<WeaponGrabber>();
         anim.SetBool( "Dead", false );
 

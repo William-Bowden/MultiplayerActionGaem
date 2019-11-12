@@ -632,9 +632,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 4ac5db7b841bd894997c724d9e0551c2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 97ae582b8de6b394288f83ef7434aa00, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -655,3 +655,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 4396493359237306}
   cam: {fileID: 0}
+  pointerDist: -0.1

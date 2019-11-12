@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 268673b9bcb6b4c4195df9e02f00f01c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupRadius: 1.25
+  pickupRadius: 1.75
   origParent: {fileID: 0}
   triggerable: 1
   maxShootTimer: 0.1

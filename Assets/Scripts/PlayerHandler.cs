@@ -6,6 +6,7 @@ using UnityEngine.InputSystem.PlayerInput;
 public class PlayerHandler : MonoBehaviour
 {
     [SerializeField] List<Vector3> startPositions = new List<Vector3>();
+    PlayerIdentifier identifier;
 
     List<Vector3> spawnPositions = new List<Vector3>();
 
@@ -22,9 +23,9 @@ public class PlayerHandler : MonoBehaviour
 
         Character c = input.GetComponent<Character>();
 
-
         if( c ) {
             c.SetPlayerHandler( this );
+            identifier = c.GetComponentInChildren<PlayerIdentifier>();
 
             Vector3 pos = Vector3.zero;
 
@@ -39,6 +40,9 @@ public class PlayerHandler : MonoBehaviour
 
             input.transform.root.position = pos;
         }
+
+
+        identifier.SetColor( playerNumber );
     }
 
     public Vector3 GetRandSpawnPos() {
