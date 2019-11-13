@@ -12,8 +12,6 @@ public class WeaponPickup : Interactable
 
     float emptyRemovalTimer = 5.0f;
     float droppedRemovalTimer = 15.0f;
-    float maxRemovalTimer = 5.0f;
-    float removalTimer = 5.0f;
     float maxDistance = 50.0f;
 
     [SerializeField]
@@ -70,7 +68,8 @@ public class WeaponPickup : Interactable
         rb = GetComponent<Rigidbody2D>();
         colliders = GetComponents<Collider2D>();
         gun = GetComponent<Gun>();
-        removalTimer = maxRemovalTimer;
+
+        StartCoroutine( DistCheck( 1.0f ) );
     }
 
     private void Start() {
@@ -79,21 +78,6 @@ public class WeaponPickup : Interactable
 
     private void Update() {
         if( Available ) {
-            if( gun.currentAmmo <= 0 ) {
-                //removalTimer -= Time.deltaTime;
-            }
-            else {
-                float distFromCenter = Mathf.Abs( ( transform.position - Vector3.zero ).magnitude );
-
-                if( distFromCenter > maxDistance ) {
-                    RemovePickup();
-                }
-            }
-
-            //if( removalTimer <= 0 ) {
-            //    RemovePickup();
-            //}
-
             if( shootTimer > 0 ) {
                 shootTimer -= Time.deltaTime;
             }
@@ -101,6 +85,9 @@ public class WeaponPickup : Interactable
     }
 
     public void Interact( Transform weaponHeld, Transform newParent ) {
+        if( gun.currentAmmo <= 0 ) {
+            return;
+        }
         base.Interact( newParent );
 
         if( !weaponHeld && gun.currentAmmo > 0 ) {
@@ -142,6 +129,7 @@ public class WeaponPickup : Interactable
     }
 
     void RemovePickup() {
+        StopAllCoroutines();
         if( transform.parent == null ) {
             Destroy( gameObject );
         }
@@ -150,7 +138,6 @@ public class WeaponPickup : Interactable
         gun.Reload();
         gun.ResetColor();
         shootTimer = 0;
-        removalTimer = maxRemovalTimer;
     }
 
     IEnumerator DropWeapon( float removalTime ) {
@@ -161,8 +148,19 @@ public class WeaponPickup : Interactable
     IEnumerator ShrinkWeapon( float waitTime, float removalTime ) {
         while( true ) {
             yield return new WaitForSeconds( waitTime );
-            //transform.localScale *= 0.975f;
             transform.localScale -= Vector3.one * waitTime / removalTime;
+        }
+    }
+    IEnumerator DistCheck( float waitTime ) {
+        while( true ) {
+            yield return new WaitForSeconds( waitTime );
+            if( Available ) {
+                float distFromCenter = Mathf.Abs( ( transform.position - Vector3.zero ).magnitude );
+
+                if( distFromCenter > maxDistance ) {
+                    RemovePickup();
+                }
+            }
         }
     }
 
