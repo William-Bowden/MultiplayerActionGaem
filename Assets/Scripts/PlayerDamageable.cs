@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDamageable : Damageable {
+public class PlayerDamageable : Damageable
+{
+    public GameObject starsPrefab;
 
     Character character;
     TargetGroupManager tgm;
@@ -29,8 +31,7 @@ public class PlayerDamageable : Damageable {
     }
 
     protected override void Die() {
-        DeathEffects();
-        isDead = true;
+        base.Die();
 
         character.gameObject.layer = immune;
 
@@ -39,6 +40,33 @@ public class PlayerDamageable : Damageable {
         }
 
         character.canInput = false;
+    }
+
+    protected override void OnCollisionEnter2D( Collision2D collision ) {
+        Damageable damageable = collision.gameObject.GetComponent<Damageable>();
+        Character character = collision.gameObject.GetComponent<Character>();
+
+        if( collision.transform != transform && ( damageable ) ) {
+            if( dieOnStomped ) {
+                if( !character ) {
+                    float speedOfCollision = collision.rigidbody.velocity.y;
+                    if( speedOfCollision > -3.0f ) {
+                        return;
+                    }
+                }
+
+                Vector3 diff = Vector3.Normalize( transform.position - collision.transform.position );
+                float dot = Vector3.Dot( diff, Vector3.up );
+
+                if( dot < -0.8f ) {
+                    if( !isDead ) {
+                        GameObject stars = Instantiate( starsPrefab, transform.position + new Vector3( 0.02f, 0, 0 ), Quaternion.identity, transform );
+                    }
+
+                    Die();
+                }
+            }
+        }
     }
 
 }

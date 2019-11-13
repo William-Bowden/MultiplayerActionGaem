@@ -324,6 +324,8 @@ MonoBehaviour:
   onDeathNoises: []
   dieOnStomped: 1
   isDead: 0
+  starsPrefab: {fileID: 5614025707228543822, guid: 5db243c9c3e9bc541b48caaa77b56e6e,
+    type: 3}
 --- !u!114 &4507842276996651394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -602,8 +604,8 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 25, y: 25}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 30, y: 30}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &3608542514367822341
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -655,4 +657,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 4396493359237306}
   cam: {fileID: 0}
-  pointerDist: -0.1
+  pointerDist: -0.05

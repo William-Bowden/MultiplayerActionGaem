@@ -180,8 +180,18 @@ public class Character : MonoBehaviour
         if( canInput ) {
             if( attacking && gun ) {
                 gun.Shoot();
+
+                if( gun.currentAmmo <= 0 ) {
+                    StartCoroutine( DropWeapon() );
+                }
             }
         }
+    }
+
+    IEnumerator DropWeapon() {
+        gun = null;
+        yield return new WaitForSeconds( 0.01f );
+        gun = grabber.Interact();
     }
 
 

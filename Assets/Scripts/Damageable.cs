@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Damageable : MonoBehaviour {
+public class Damageable : MonoBehaviour
+{
     [SerializeField]
     float health;
 
@@ -12,7 +13,7 @@ public class Damageable : MonoBehaviour {
     public AudioClip[] onDeathNoises;
 
     [SerializeField]
-    bool dieOnStomped;
+    protected bool dieOnStomped;
 
     [HideInInspector]
     public bool isDead;
@@ -94,9 +95,6 @@ public class Damageable : MonoBehaviour {
     protected virtual void Die() {
         DeathEffects();
         isDead = true;
-
-        // destroy this damageable
-        gameObject.SetActive( false );
     }
 
     protected void DeathEffects() {
@@ -124,7 +122,7 @@ public class Damageable : MonoBehaviour {
         // add revival sounds/effects?
     }
 
-    private void OnCollisionEnter2D( Collision2D collision ) {
+    protected virtual void OnCollisionEnter2D( Collision2D collision ) {
         Damageable damageable = collision.gameObject.GetComponent<Damageable>();
         Interactable pickup = collision.gameObject.GetComponent<Interactable>();
         Character character = collision.gameObject.GetComponent<Character>();

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Container : Damageable {
+public class Container : ObjectDamageable {
 
     // if true, a single item will be dropped from the whatToDrop list
     // if false, all items from the whatToDrop list will be dropped
