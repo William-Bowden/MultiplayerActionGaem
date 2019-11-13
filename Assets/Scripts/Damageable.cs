@@ -7,7 +7,7 @@ public class Damageable : MonoBehaviour
     [SerializeField]
     float health;
 
-    float maxHealth;
+    protected float maxHealth;
 
     public GameObject[] onDeathParticles;
     public AudioClip[] onDeathNoises;

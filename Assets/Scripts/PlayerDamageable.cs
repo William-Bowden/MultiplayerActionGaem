@@ -63,7 +63,7 @@ public class PlayerDamageable : Damageable
                         GameObject stars = Instantiate( starsPrefab, transform.position + new Vector3( 0.02f, 0, 0 ), Quaternion.identity, transform );
                     }
 
-                    Die();
+                    TakeDamage( maxHealth );
                 }
             }
         }

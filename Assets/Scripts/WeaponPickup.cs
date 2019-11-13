@@ -10,6 +10,8 @@ public class WeaponPickup : Interactable
     [SerializeField]
     Transform origParent;
 
+    float emptyRemovalTimer = 5.0f;
+    float droppedRemovalTimer = 15.0f;
     float maxRemovalTimer = 5.0f;
     float removalTimer = 5.0f;
     float maxDistance = 50.0f;
@@ -48,6 +50,16 @@ public class WeaponPickup : Interactable
 
         if( newAvailability ) {
             transform.SetParent( origParent );
+            if( gun.currentAmmo <= 0 ) {
+                StartCoroutine( DropWeapon( emptyRemovalTimer ) );
+            }
+            else {
+                StartCoroutine( DropWeapon( droppedRemovalTimer ) );
+            }
+        }
+        else {
+            StopAllCoroutines();
+            transform.localScale = Vector3.one;
         }
     }
 
@@ -68,7 +80,7 @@ public class WeaponPickup : Interactable
     private void Update() {
         if( Available ) {
             if( gun.currentAmmo <= 0 ) {
-                removalTimer -= Time.deltaTime;
+                //removalTimer -= Time.deltaTime;
             }
             else {
                 float distFromCenter = Mathf.Abs( ( transform.position - Vector3.zero ).magnitude );
@@ -78,9 +90,9 @@ public class WeaponPickup : Interactable
                 }
             }
 
-            if( removalTimer <= 0 ) {
-                RemovePickup();
-            }
+            //if( removalTimer <= 0 ) {
+            //    RemovePickup();
+            //}
 
             if( shootTimer > 0 ) {
                 shootTimer -= Time.deltaTime;
@@ -139,6 +151,19 @@ public class WeaponPickup : Interactable
         gun.ResetColor();
         shootTimer = 0;
         removalTimer = maxRemovalTimer;
+    }
+
+    IEnumerator DropWeapon( float removalTime ) {
+        StartCoroutine( ShrinkWeapon( removalTime / 50.0f, removalTime ) );
+        yield return new WaitForSeconds( removalTime );
+        RemovePickup();
+    }
+    IEnumerator ShrinkWeapon( float waitTime, float removalTime ) {
+        while( true ) {
+            yield return new WaitForSeconds( waitTime );
+            //transform.localScale *= 0.975f;
+            transform.localScale -= Vector3.one * waitTime / removalTime;
+        }
     }
 
     private void OnCollisionEnter2D( Collision2D collision ) {
