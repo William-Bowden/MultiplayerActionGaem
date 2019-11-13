@@ -86,6 +86,7 @@ public class WeaponPickup : Interactable
 
     public void Interact( Transform weaponHeld, Transform newParent ) {
         if( gun.currentAmmo <= 0 ) {
+            Available = false;
             return;
         }
         base.Interact( newParent );
