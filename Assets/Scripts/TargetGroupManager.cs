@@ -13,8 +13,14 @@ public class TargetGroupManager : MonoBehaviour
 
     [SerializeField]
     int playerCount = 0;
+    [SerializeField]
+    bool slowCam;
     float camTimer = 0;
     float maxTimer = 3.0f;
+    [SerializeField]
+    float lossSpeed = 10.0f;
+    [SerializeField]
+    float gainSpeed = 50.0f;
     int camPriority = 0;
     int prevPriority = 0;
 
@@ -32,6 +38,10 @@ public class TargetGroupManager : MonoBehaviour
         }
 
         maxTimer = 6.0f / ( tg.m_Targets.Length - 1 );
+
+        if( slowCam ) {
+
+        }
     }
 
     private void Update() {
@@ -45,13 +55,26 @@ public class TargetGroupManager : MonoBehaviour
                     camPriority = 0;
                 }
                 camTimer = 0;
+
+                if( slowCam ) {
+                    maxTimer = Random.Range( 4.5f, 7.5f );
+                }
             }
 
             if( tg.m_Targets.Length > 0 ) {
-                tg.m_Targets[ camPriority ].weight = Mathf.Lerp( tg.m_Targets[ camPriority ].weight, 10, maxTimer / 10.0f );
+                if( slowCam ) {
+                    tg.m_Targets[ camPriority ].weight = Mathf.Lerp( tg.m_Targets[ camPriority ].weight, 3, lossSpeed );
 
-                if( prevPriority != camPriority ) {
-                    tg.m_Targets[ prevPriority ].weight = Mathf.Lerp( tg.m_Targets[ prevPriority ].weight, 1, maxTimer / 50.0f );
+                    if( prevPriority != camPriority ) {
+                        tg.m_Targets[ prevPriority ].weight = Mathf.Lerp( tg.m_Targets[ prevPriority ].weight, 1, gainSpeed );
+                    }
+                }
+                else {
+                    tg.m_Targets[ camPriority ].weight = Mathf.Lerp( tg.m_Targets[ camPriority ].weight, 10, maxTimer / lossSpeed );
+
+                    if( prevPriority != camPriority ) {
+                        tg.m_Targets[ prevPriority ].weight = Mathf.Lerp( tg.m_Targets[ prevPriority ].weight, 1, maxTimer / gainSpeed );
+                    }
                 }
             }
         }

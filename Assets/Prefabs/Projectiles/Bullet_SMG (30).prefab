@@ -79,7 +79,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.125, y: 0.125}
+  m_Size: {x: 0.25, y: 0.25}
   m_EdgeRadius: 0
 --- !u!114 &6657153602147515649
 MonoBehaviour:
@@ -97,11 +97,11 @@ MonoBehaviour:
   explosive: 0
   explosionRadius: 1
   randomBetweenForce: 1
-  initialForceMin: 10
-  initialForce: 15
+  initialForceMin: 16
+  initialForce: 25
   randomBetweenLife: 1
-  MinLife: 0.35
-  maxLife: 0.6
+  MinLife: 0.175
+  maxLife: 0.275
   removeOnTrigger: 1
   removeOnCollision: 0
   puffPrefab: {fileID: 5752710622799710428, guid: a30344174757cbd4394b46f9ab1d92ac,
@@ -149,7 +149,7 @@ TrailRenderer:
   m_Time: 0.05
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.08
+    widthMultiplier: 0.16
     widthCurve:
       serializedVersion: 2
       m_Curve:

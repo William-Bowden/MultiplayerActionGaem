@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Gun : MonoBehaviour {
+public class Gun : MonoBehaviour
+{
 
     SpriteRenderer sr;
 
@@ -52,7 +53,7 @@ public class Gun : MonoBehaviour {
         shootTimer -= Time.deltaTime;
         recoilTimer += Time.deltaTime;
 
-        if( fireRate - shootTimer > 0.05 || shootTimer <= 0 ) {
+        if( muzzleFlash && ( fireRate - shootTimer > 0.05 || shootTimer <= 0 ) ) {
             muzzleFlash.enabled = false;
         }
     }
@@ -135,9 +136,11 @@ public class Gun : MonoBehaviour {
             recoilTimer = 0;
 
             // create smoke
-            GameObject smoke = Instantiate( muzzleSmokePrefab, muzzle.position + new Vector3( 0.02f, 0, 0 ), transform.rotation, muzzle );
+            if( muzzleSmokePrefab ) {
+                GameObject smoke = Instantiate( muzzleSmokePrefab, muzzle.position + new Vector3( 0.02f, 0, 0 ), transform.rotation, muzzle );
 
-            Destroy( smoke, 1f );
+                Destroy( smoke, 1f );
+            }
 
             if( currentAmmo <= 0 ) {
                 SetEmptyColor();
@@ -154,6 +157,10 @@ public class Gun : MonoBehaviour {
     }
 
     public void ResetColor() {
+        if( !sr ) {
+            return;
+        }
+
         Color temp = sr.color;
         temp.r = 1.0f;
         temp.g = 1.0f;

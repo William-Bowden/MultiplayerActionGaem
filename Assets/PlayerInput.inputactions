@@ -134,6 +134,17 @@
                 },
                 {
                     "name": "",
+                    "id": "e89fb195-ae9e-428c-a87a-2ae996d08cf9",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "aaf0e765-5280-4a3f-b665-c1f77ebd9f09",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -167,6 +178,17 @@
                 },
                 {
                     "name": "",
+                    "id": "e0931dc2-d153-45f9-a1ea-551067731d11",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "JumpRelease",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "cc29e130-350b-42f2-930a-799ecdf449f5",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -180,28 +202,6 @@
                     "name": "",
                     "id": "502d4f5c-4234-4b9b-bc6d-7f084344ef37",
                     "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Interact",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "fd312782-8fc4-431c-94fb-52a3bb94eadf",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Interact",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "6862653a-58b4-41e0-be92-019e563e04a4",
-                    "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

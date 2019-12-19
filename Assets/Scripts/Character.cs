@@ -138,6 +138,7 @@ public class Character : MonoBehaviour
     }
     void OnJump() {
         if( canInput && ( grounded || coyoteTime > 0 ) ) {
+            grounded = false;
             anim.SetBool( "Ground", false );
             rb.velocity = new Vector2( rb.velocity.x, 0 );
             rb.AddForce( new Vector2( 0, jumpForce ) );

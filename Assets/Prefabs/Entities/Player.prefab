@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ph: {fileID: 0}
-  maxSpeed: 12.5
+  maxSpeed: 10
   groundcheck: {fileID: 4248356302021384}
   whatIsGround:
     serializedVersion: 2

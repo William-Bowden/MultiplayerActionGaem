@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Container : ObjectDamageable {
+public class Container : ObjectDamageable
+{
 
     // if true, a single item will be dropped from the whatToDrop list
     // if false, all items from the whatToDrop list will be dropped
@@ -28,20 +29,24 @@ public class Container : ObjectDamageable {
 
     protected override void Die() {
         if( givesRandom ) {
-            GameObject go = whatToDrop[ Random.Range( 0, whatToDrop.Count ) ];
-            if( go ) {
-                gameObjects.Add( Instantiate( go, transform.position, Quaternion.Euler( goRotation ) ) );
+            for( int i = 0; i < numToGive; i++ ) {
+                GameObject go = whatToDrop[ Random.Range( 0, whatToDrop.Count ) ];
+                if( go ) {
+                    gameObjects.Add( Instantiate( go, transform.position, Quaternion.Euler( goRotation ) ) );
+                }
             }
         }
         else {
-            foreach( GameObject go in whatToDrop ) {
-                if( go ) {
-                    GameObject dropped = Instantiate( go, transform.position, Quaternion.Euler( goRotation ) );
-                    gameObjects.Add( dropped );
+            for( int i = 0; i < numToGive; i++ ) {
+                foreach( GameObject go in whatToDrop ) {
+                    if( go ) {
+                        GameObject dropped = Instantiate( go, transform.position, Quaternion.Euler( goRotation ) );
+                        gameObjects.Add( dropped );
 
-                    Bullet bullet = dropped.GetComponent<Bullet>();
-                    if( bullet ) {
-                        Destroy( dropped );
+                        Bullet bullet = dropped.GetComponent<Bullet>();
+                        if( bullet ) {
+                            Destroy( dropped );
+                        }
                     }
                 }
             }

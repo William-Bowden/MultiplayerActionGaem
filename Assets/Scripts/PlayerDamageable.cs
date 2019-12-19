@@ -55,15 +55,17 @@ public class PlayerDamageable : Damageable
                     }
                 }
 
-                Vector3 diff = Vector3.Normalize( transform.position - collision.transform.position );
-                float dot = Vector3.Dot( diff, Vector3.up );
+                if( character.GetComponent<Rigidbody2D>().velocity.y < -0.1f ) {
+                    Vector3 diff = Vector3.Normalize( transform.position - collision.transform.position );
+                    float dot = Vector3.Dot( diff, Vector3.up );
 
-                if( dot < -0.8f ) {
-                    if( !isDead ) {
-                        GameObject stars = Instantiate( starsPrefab, transform.position + new Vector3( 0.02f, 0, 0 ), Quaternion.identity, transform );
+                    if( dot < -0.8f ) {
+                        if( !isDead ) {
+                            GameObject stars = Instantiate( starsPrefab, transform.position + new Vector3( 0.02f, 0, 0 ), Quaternion.identity, transform );
+                        }
+
+                        TakeDamage( maxHealth * 0.5f );
                     }
-
-                    TakeDamage( maxHealth );
                 }
             }
         }

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponGrabber : MonoBehaviour {
+public class WeaponGrabber : MonoBehaviour
+{
     List<Interactable> interactables;
 
     bool GAMERUNNING = false;
@@ -19,6 +20,13 @@ public class WeaponGrabber : MonoBehaviour {
     public Gun Interact() {
         Interactable closestInteractable = null;
         float shortestDistance = 0.0f;
+
+        if( weaponHeld && weaponHeld.GetComponent<Gun>().currentAmmo <= 0 ) {
+            WeaponPickup currentWeapon = weaponHeld.GetComponent<WeaponPickup>();
+            currentWeapon.SetAvailability( true );
+            weaponHeld = null;
+            return null;
+        }
 
         foreach( Interactable interactable in interactables ) {
             WeaponPickup weapon = interactable?.GetComponent<WeaponPickup>();

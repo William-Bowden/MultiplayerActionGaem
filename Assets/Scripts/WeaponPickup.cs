@@ -6,9 +6,14 @@ public class WeaponPickup : Interactable
 {
     public float pickupRadius = 1.0f;
 
+    static CompositeCollider2D worldCol;
+
     Gun gun;
     [SerializeField]
     Transform origParent;
+
+    [SerializeField]
+    bool disableOnEmpty = false;
 
     float emptyRemovalTimer = 5.0f;
     float droppedRemovalTimer = 15.0f;
@@ -22,6 +27,8 @@ public class WeaponPickup : Interactable
 
     public bool onStand = false;
 
+    Vector3 standOffset = new Vector3( 0, 0.5f, 0 );
+
     [SerializeField]
     bool Available = true;
     public bool IsAvailable() {
@@ -34,6 +41,7 @@ public class WeaponPickup : Interactable
         rb.bodyType = RigidbodyType2D.Kinematic;
         shootTimer = maxShootTimer;
     }
+
     public void SetAvailability( bool newAvailability ) {
         if( !newAvailability && onStand ) {
             WeaponStand ws = transform.parent.GetComponent<WeaponStand>();
@@ -69,7 +77,12 @@ public class WeaponPickup : Interactable
         colliders = GetComponents<Collider2D>();
         gun = GetComponent<Gun>();
 
+        if( !worldCol ) {
+            worldCol = FindObjectOfType<CompositeCollider2D>();
+        }
+
         StartCoroutine( DistCheck( 1.0f ) );
+        StartCoroutine( DropWeapon( droppedRemovalTimer ) );
     }
 
     private void Start() {
@@ -78,6 +91,10 @@ public class WeaponPickup : Interactable
 
     private void Update() {
         if( Available ) {
+            if( onStand ) {
+                transform.position = transform.parent.position + standOffset + new Vector3( 0.0f, Mathf.Sin( Time.time ) * 0.2f, 0.0f );
+            }
+
             if( shootTimer > 0 ) {
                 shootTimer -= Time.deltaTime;
             }
@@ -87,6 +104,7 @@ public class WeaponPickup : Interactable
     public void Interact( Transform weaponHeld, Transform newParent ) {
         if( gun.currentAmmo <= 0 ) {
             Available = false;
+
             return;
         }
         base.Interact( newParent );
@@ -142,6 +160,10 @@ public class WeaponPickup : Interactable
     }
 
     IEnumerator DropWeapon( float removalTime ) {
+        if( disableOnEmpty && gun.currentAmmo <= 0 ) {
+            RemovePickup();
+        }
+
         StartCoroutine( ShrinkWeapon( removalTime / 50.0f, removalTime ) );
         yield return new WaitForSeconds( removalTime );
         RemovePickup();
@@ -149,7 +171,7 @@ public class WeaponPickup : Interactable
     IEnumerator ShrinkWeapon( float waitTime, float removalTime ) {
         while( true ) {
             yield return new WaitForSeconds( waitTime );
-            transform.localScale -= Vector3.one * waitTime / removalTime;
+            transform.localScale -= transform.localScale * waitTime / removalTime;
         }
     }
     IEnumerator DistCheck( float waitTime ) {

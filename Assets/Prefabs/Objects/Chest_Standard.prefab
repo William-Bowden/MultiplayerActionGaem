@@ -143,7 +143,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 50
-  maxHealth: 0
   onDeathParticles:
   - {fileID: 477631860813595833, guid: 6ef3b8e27054dfd4bab244c6ceac4840, type: 3}
   onDeathNoises:
@@ -181,3 +180,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDistance: 50
+  kill: 0

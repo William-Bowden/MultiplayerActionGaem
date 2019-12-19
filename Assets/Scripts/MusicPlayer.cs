@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class MusicPlayer : MonoBehaviour {
+public class MusicPlayer : MonoBehaviour
+{
     static MusicPlayer instance = null;
 
     public static AudioSource musicPlayer;
@@ -11,6 +12,7 @@ public class MusicPlayer : MonoBehaviour {
 
     [SerializeField]
     AudioClip[] songList;
+    int songIndex = 0;
 
     void Awake() {
         if( instance != null ) {
@@ -26,33 +28,24 @@ public class MusicPlayer : MonoBehaviour {
         musicPlayer = GetComponent<AudioSource>();
         musicPlayer.volume = 0.1f;
 
-        musicPlayer.clip = songList[ Random.Range( 0, songList.Length ) ];
+        songIndex = Random.Range( 0, songList.Length );
+        musicPlayer.clip = songList[ songIndex ];
 
         if( !musicPlayer.isPlaying ) {
             musicPlayer.Play();
         }
-
-        //if( PlayerPrefs.HasKey( "musicVol" ) ) {
-        //    musicPlayer.volume = PlayerPrefs.GetFloat( "musicVol" );
-        //    volSlider.value = PlayerPrefs.GetFloat( "musicVol" );
-        //}
-        //else {
-        //    musicPlayer.volume = 0.5f;
-        //    volSlider.value = 0.5f;
-        //    PlayerPrefs.SetFloat( "musicVol", musicPlayer.volume );
-        //    PlayerPrefs.Save();
-        //}
     }
 
-    //private void Update() {
-    //    if( PlayerPrefs.HasKey( "musicVol" ) ) {
+    public void NextSong() {
+        if( ++songIndex >= songList.Length ) {
+            songIndex = 0;
+        }
 
-    //        if( musicPlayer.volume != PlayerPrefs.GetFloat( "musicVol" ) ) {
-    //            PlayerPrefs.SetFloat( "musicVol", musicPlayer.volume );
-    //            PlayerPrefs.Save();
-    //        }
+        musicPlayer.clip = songList[ songIndex ];
 
-    //    }
-    //}
+        if( !musicPlayer.isPlaying ) {
+            musicPlayer.Play();
+        }
+    }
 
 }

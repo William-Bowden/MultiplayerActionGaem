@@ -13,7 +13,7 @@ GameObject:
   m_Layer: 16
   m_Name: MP5Stand
   m_TagString: Untagged
-  m_Icon: {fileID: 2800000, guid: 354c0d4c5a394f44c92afc64b438f05c, type: 3}
+  m_Icon: {fileID: 2800000, guid: 4aa0af9d17d600442bd360d0b642bda4, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1

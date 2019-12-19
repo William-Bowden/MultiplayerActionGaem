@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6657153602147515649}
   - component: {fileID: 996827126412553671}
   m_Layer: 12
-  m_Name: Bullet_Rifle
+  m_Name: Bullet_Rifle (65)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.125, y: 0.125}
+  m_Size: {x: 0.25, y: 0.25}
   m_EdgeRadius: 0
 --- !u!114 &6657153602147515649
 MonoBehaviour:
@@ -97,10 +97,10 @@ MonoBehaviour:
   explosive: 0
   explosionRadius: 1
   randomBetweenForce: 1
-  initialForceMin: 15
-  initialForce: 20
+  initialForceMin: 20
+  initialForce: 25
   randomBetweenLife: 0
-  MinLife: 2
+  MinLife: 0.5
   maxLife: 1
   removeOnTrigger: 1
   removeOnCollision: 0
@@ -149,7 +149,7 @@ TrailRenderer:
   m_Time: 0.05
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.15
+    widthMultiplier: 0.2
     widthCurve:
       serializedVersion: 2
       m_Curve:

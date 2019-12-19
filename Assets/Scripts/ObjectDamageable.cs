@@ -12,12 +12,13 @@ public class ObjectDamageable : Damageable
     }
 
     protected override void OnCollisionEnter2D( Collision2D collision ) {
-        if( collision.transform != transform ) {
+        Character character = collision.gameObject.GetComponent<Character>();
+        if( collision.transform != transform && character ) {
             if( dieOnStomped ) {
                 Vector3 diff = Vector3.Normalize( transform.position - collision.transform.position );
                 float dot = Vector3.Dot( diff, Vector3.up );
 
-                if( dot < -0.8f ) {
+                if( dot < -0.8f || dot > 0.8f ) {
                     Die();
                 }
             }
