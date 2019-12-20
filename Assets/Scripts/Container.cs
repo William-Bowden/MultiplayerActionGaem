@@ -12,6 +12,8 @@ public class Container : ObjectDamageable
     [SerializeField]
     int numToGive = 1;
 
+    int originalChildCount;
+
 
     [SerializeField]
     protected List<GameObject> whatToDrop;
@@ -24,6 +26,7 @@ public class Container : ObjectDamageable
     // Start is called before the first frame update
     protected override void Start() {
         base.Start();
+        originalChildCount = transform.childCount;
         gameObjects = new List<GameObject>();
     }
 
@@ -48,6 +51,22 @@ public class Container : ObjectDamageable
                             Destroy( dropped );
                         }
                     }
+                }
+            }
+        }
+
+        if( transform.childCount > originalChildCount ) {
+            List<Transform> removals = new List<Transform>();
+
+            for( int i = originalChildCount; i < transform.childCount; i++ ) {
+                removals.Add( transform.GetChild( i ) );
+            }
+
+            foreach( Transform t in removals ) {
+                Grenade grenade = t.GetComponent<Grenade>();
+
+                if( grenade ) {
+                    grenade.Unstick();
                 }
             }
         }

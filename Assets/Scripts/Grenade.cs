@@ -17,6 +17,9 @@ public class Grenade : MonoBehaviour
 
     [SerializeField]
     bool onContact = false;
+    [SerializeField]
+    bool isSticky = false;
+    bool hasStuck = true;
     public ParticleSystem explosion;
 
     Rigidbody2D rb;
@@ -38,11 +41,18 @@ public class Grenade : MonoBehaviour
 
         StartCoroutine( Tick( fuseLength ) );
         StartCoroutine( Fuse( fuseLength ) );
+        StartCoroutine( ResetStickyness() );
     }
 
     void Boom() {
         sr.enabled = false;
         explosion.Play();
+
+        transform.parent = null;
+        rb.simulated = false;
+
+        // change layers to something that won't collide (5 is UI)
+        gameObject.layer = 5;
 
         RaycastHit2D[] hits = Physics2D.CircleCastAll( transform.position, explosionRadius, Vector2.zero );
 
@@ -58,8 +68,13 @@ public class Grenade : MonoBehaviour
             }
         }
 
-        Destroy( gameObject, 0.5f );
+        Destroy( gameObject, explosion.main.duration );
     }
+
+    public void Unstick() {
+        StartCoroutine( ResetStickyness() );
+    }
+
 
     void ToggleColor( bool stop = false ) {
         Color temp = sr.color;
@@ -111,9 +126,25 @@ public class Grenade : MonoBehaviour
         Boom();
     }
 
+    IEnumerator ResetStickyness() {
+        transform.parent = null;
+        rb.simulated = true;
+
+        // wait 0.075 seconds then re-enable stickyness
+        yield return new WaitForSeconds( 0.075f );
+        hasStuck = false;
+    }
+
     private void OnCollisionEnter2D( Collision2D collision ) {
-        // if the grenade collides with a player, have it explode
-        if( onContact && collision.gameObject.layer == 10 ) {
+        // if a sticky grenade collides with something, have it stick
+        if( isSticky && !hasStuck ) {
+            rb.simulated = false;
+            transform.parent = collision.transform;
+            hasStuck = true;
+        }
+
+        // if an on-contact grenade collides with a player, have it explode
+        else if( onContact && collision.gameObject.layer == 10 ) {
             Boom();
         }
     }

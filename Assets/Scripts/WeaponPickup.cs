@@ -164,9 +164,11 @@ public class WeaponPickup : Interactable
             RemovePickup();
         }
 
-        StartCoroutine( ShrinkWeapon( removalTime / 50.0f, removalTime ) );
-        yield return new WaitForSeconds( removalTime );
-        RemovePickup();
+        if( gameObject.activeInHierarchy ) {
+            StartCoroutine( ShrinkWeapon( removalTime / 50.0f, removalTime ) );
+            yield return new WaitForSeconds( removalTime );
+            RemovePickup();
+        }
     }
     IEnumerator ShrinkWeapon( float waitTime, float removalTime ) {
         while( true ) {
