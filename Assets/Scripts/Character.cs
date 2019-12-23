@@ -163,6 +163,12 @@ public class Character : MonoBehaviour
             attacking = !attacking;
         }
     }
+    void OnShootRelease() {
+        if( canInput ) {
+            attacking = !attacking;
+            StopAttack();
+        }
+    }
     void OnInteract() {
         if( canInput ) {
             gun = grabber.Interact();
@@ -185,6 +191,13 @@ public class Character : MonoBehaviour
                 if( gun.currentAmmo <= 0 ) {
                     StartCoroutine( DropWeapon() );
                 }
+            }
+        }
+    }
+    void StopAttack() {
+        if( canInput ) {
+            if( gun ) {
+                gun.StopShooting();
             }
         }
     }

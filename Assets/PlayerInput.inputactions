@@ -35,7 +35,15 @@
                     "id": "08193a1f-df2c-4a45-9608-6fd1db88f16a",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(pressPoint=2E-05,behavior=2)"
+                    "interactions": "Press(pressPoint=2E-05)"
+                },
+                {
+                    "name": "ShootRelease",
+                    "type": "Button",
+                    "id": "4e888ac6-f8e6-4c84-99ae-5df1156d8ffa",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(pressPoint=2E-05,behavior=1)"
                 },
                 {
                     "name": "Interact",
@@ -250,6 +258,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "EnterGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fd264eaf-73fd-465b-833e-866097cd216a",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShootRelease",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -45,7 +45,7 @@ public class WeaponPickup : Interactable
     public void SetAvailability( bool newAvailability ) {
         if( !newAvailability && onStand ) {
             WeaponStand ws = transform.parent.GetComponent<WeaponStand>();
-            ws.hasWeapon = false;
+            ws.hasItem = false;
             onStand = false;
             gameObject.layer = 11;
         }

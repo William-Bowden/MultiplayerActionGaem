@@ -44,10 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b30a7d4056a79044eb0890c5e3f07c4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 3661487810353502273, guid: 1b436b331e16c1d4281fcdbf88afedf0,
+  itemPrefab: {fileID: 3661487810353502273, guid: 1b436b331e16c1d4281fcdbf88afedf0,
     type: 3}
-  weaponPool: []
-  hasWeapon: 0
+  itemPool: []
+  poolSize: 8
+  hasItem: 0
   spawnAtStart: 1
   spawnRate: 14
   spawnTimer: 0

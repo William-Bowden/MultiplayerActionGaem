@@ -147,7 +147,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 7388586a40728e940aee0b0d2043ad06, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 73207c372027dc842908b60e186485eb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -279,10 +279,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d93a525746fff542b66f4567a8e8cef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAmmo: 8
-  currentAmmo: 8
+  maxAmmo: 6
+  currentAmmo: 6
   weaponAccuracy: 0.6
   fireRate: 0.8
+  spinUp: 0
+  spinUpTime: 2
+  spinTime: 2
+  maxFireRate: 0
+  firing: 0
   shootTimer: 0
   muzzle: {fileID: 3607870936921617183}
   muzzleFlash: {fileID: 0}
@@ -319,7 +324,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8795649673970111205}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.516, y: 0.023, z: 0}
+  m_LocalPosition: {x: 0.546, y: 0.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 164355513292212814}

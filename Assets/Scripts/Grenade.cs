@@ -6,8 +6,9 @@ public class Grenade : MonoBehaviour
 {
 
     float damage = 150f;
-    float explosionRadius = 1.5f;
 
+    [Range( 0, 3f ), SerializeField]
+    float explosionRadius = 1f;
 
     [Range( 100f, 1000f ), SerializeField]
     float throwForce = 3;
@@ -136,6 +137,8 @@ public class Grenade : MonoBehaviour
     }
 
     private void OnCollisionEnter2D( Collision2D collision ) {
+        Damageable damageable = collision.gameObject.GetComponent<Damageable>();
+
         // if a sticky grenade collides with something, have it stick
         if( isSticky && !hasStuck ) {
             rb.simulated = false;
@@ -144,7 +147,7 @@ public class Grenade : MonoBehaviour
         }
 
         // if an on-contact grenade collides with a player, have it explode
-        else if( onContact && collision.gameObject.layer == 10 ) {
+        else if( onContact && damageable ) {
             Boom();
         }
     }

@@ -17,6 +17,19 @@ public class Gun : MonoBehaviour
     float weaponAccuracy = 1f;
     [Range( 0, 1.5f ), SerializeField]
     float fireRate = 0.5f;
+
+    [SerializeField]
+    bool spinUp = false; // does this require spin up
+    [SerializeField]
+    float spinUpTime = 1.0f; // max spin timer
+    [SerializeField]
+    float spinTime = 1.0f; // current spin
+    [SerializeField]
+    float maxFireRate = 0.25f;
+
+    [SerializeField]
+    bool firing = false;
+
     [SerializeField]
     float shootTimer = 0;
     float recoilTimer = 0;
@@ -39,6 +52,7 @@ public class Gun : MonoBehaviour
     void Awake() {
         shootTimer = 0;
         recoilTimer = 0;
+        spinTime = spinUpTime;
         currentAmmo = maxAmmo;
         if( muzzle.childCount > 0 ) {
             muzzleFlash = muzzle.GetChild( 0 ).GetComponent<SpriteRenderer>();
@@ -50,12 +64,21 @@ public class Gun : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
+        if( ( fireRate - shootTimer > 0.05 || shootTimer <= 0 ) ) {
+
+            if( muzzleFlash ) {
+                muzzleFlash.enabled = false;
+            }
+        }
+
+        if( !firing && spinTime < spinUpTime ) {
+            spinTime = Mathf.Min( spinUpTime, spinTime + Time.deltaTime );
+
+            fireRate = spinTime;
+        }
+
         shootTimer -= Time.deltaTime;
         recoilTimer += Time.deltaTime;
-
-        if( muzzleFlash && ( fireRate - shootTimer > 0.05 || shootTimer <= 0 ) ) {
-            muzzleFlash.enabled = false;
-        }
     }
 
     private void OnEnable() {
@@ -71,11 +94,20 @@ public class Gun : MonoBehaviour
     }
 
     public void Shoot() {
+        firing = true;
+
+        if( spinUp ) {
+            spinTime = Mathf.Max( 0.2f, spinTime - Time.deltaTime/2 );
+
+            fireRate = spinTime / 4;
+        }
+
         // shoot if the gun is able to at this time
         if( shootTimer < 0 && currentAmmo >= 0 ) {
             int index = 0;
 
             if( currentAmmo > 0 ) {
+
                 // create the bullet
                 GameObject bulletGO = Instantiate( bulletPrefab, muzzle.position + new Vector3( 0, 0, 1 ), transform.rotation );
 
@@ -146,6 +178,10 @@ public class Gun : MonoBehaviour
                 SetEmptyColor();
             }
         }
+    }
+
+    public void StopShooting() {
+        firing = false;
     }
 
     public void HitSurface() {
