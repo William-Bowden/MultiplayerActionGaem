@@ -47,6 +47,7 @@ public class PlayerDamageable : Damageable
         Character character = collision.gameObject.GetComponent<Character>();
 
         if( collision.transform != transform && ( damageable ) ) {
+            // if another player "stomps" on this player, this player takes damage
             if( dieOnStomped ) {
                 if( !character ) {
                     float speedOfCollision = collision.rigidbody.velocity.y;

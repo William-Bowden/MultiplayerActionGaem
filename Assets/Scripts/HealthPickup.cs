@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealthPickup : Pickup
 {
-    [Range( 0.0f, 100.0f ), SerializeField]
+    [Range( 0.0f, 150.0f ), SerializeField]
     float healAmount = 0f;
 
     protected override void Collect( GameObject collectingObject ) {
