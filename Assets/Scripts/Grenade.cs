@@ -11,7 +11,7 @@ public class Grenade : MonoBehaviour
     float explosionRadius = 1f;
 
     [Range( 100f, 1000f ), SerializeField]
-    float throwForce = 3;
+    float throwForce = 400f;
 
     [Range( 0, 3f ), SerializeField]
     float fuseLength = 3;

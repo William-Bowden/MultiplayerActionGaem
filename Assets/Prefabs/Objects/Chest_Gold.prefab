@@ -156,17 +156,16 @@ MonoBehaviour:
   numToGive: 1
   whatToDrop:
   - {fileID: 3661487810353502273, guid: 95e1647e89f90e440b16c6047ce8a75f, type: 3}
-  - {fileID: 3661487810353502273, guid: 44f059462f1619a4980f14fc937c480e, type: 3}
+  - {fileID: 6717941476110073835, guid: 5ce447e52b3a5344baa54ec00ccbfdc3, type: 3}
   - {fileID: 3661487810353502273, guid: 1a9887e77a8dc8a46bbf34b84e3a4052, type: 3}
-  - {fileID: 3661487810353502273, guid: 1478981ec6be0294aa05a25246f8e310, type: 3}
-  - {fileID: 3661487810353502273, guid: 6f3de1feddcc00547a798e15d45a0a14, type: 3}
+  - {fileID: 6717941476110073835, guid: 2978b8b9b421f024f99aeacaf815b607, type: 3}
+  - {fileID: 3661487810353502273, guid: 649b9de9685dcfb4e9a31d77413d001d, type: 3}
   - {fileID: 3661487810353502273, guid: 1871331dfc3b80c459014d60f933ad2f, type: 3}
   - {fileID: 3661487810353502273, guid: 0e7bddf0adc5e2b45a1d0897cbf1d24c, type: 3}
   - {fileID: 3661487810353502273, guid: 589fb1edb2801bf46adb60183e1a4c3e, type: 3}
   - {fileID: 3661487810353502273, guid: 0e06c0512ba6ed74c886b321a8c5a687, type: 3}
   - {fileID: 3661487810353502273, guid: 3839591be85c5c84cb071d1282f188db, type: 3}
   - {fileID: 3661487810353502273, guid: 2fd2b4e184ec9fe4aba2df3f2c048dec, type: 3}
-  - {fileID: 6717941476110073835, guid: 5ce447e52b3a5344baa54ec00ccbfdc3, type: 3}
   goRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &6990243963253037469
 MonoBehaviour:

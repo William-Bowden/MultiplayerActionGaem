@@ -21,13 +21,10 @@ public class Gun : MonoBehaviour
     [SerializeField]
     bool spinUp = false; // does this require spin up
     [SerializeField]
-    float spinUpTime = 1.0f; // max spin timer
+    float spinUpTime = 1.0f; // time until max spin
     [SerializeField]
     float spinTime = 1.0f; // current spin
-    [SerializeField]
-    float maxFireRate = 0.25f;
 
-    [SerializeField]
     bool firing = false;
 
     [SerializeField]
@@ -97,7 +94,7 @@ public class Gun : MonoBehaviour
         firing = true;
 
         if( spinUp ) {
-            spinTime = Mathf.Max( 0.2f, spinTime - Time.deltaTime/2 );
+            spinTime = Mathf.Max( 0.2f, spinTime - Time.deltaTime / 2 );
 
             fireRate = spinTime / 4;
         }
@@ -128,7 +125,14 @@ public class Gun : MonoBehaviour
                     Bullet bullet = bulletGO.GetComponent<Bullet>();
 
                     if( bullet ) {
-                        bulletGO.GetComponent<Bullet>().owner = transform.root;
+                        bullet.owner = transform.root;
+                    }
+
+                    Grenade grenade = bulletGO.GetComponent<Grenade>();
+
+                    if( grenade && maxAmmo > 1 ) {
+                        // add extra force rather than having seperate grenade prefabs?
+                        grenade.GetComponent<Rigidbody2D>().AddForce( transform.right * 500.0f );
                     }
                 }
 
