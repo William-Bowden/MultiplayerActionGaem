@@ -56,6 +56,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -89,7 +90,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3661487810134584631}
   - component: {fileID: 3661487810134584630}
-  - component: {fileID: 499011269106876087}
   m_Layer: 11
   m_Name: GFX
   m_TagString: Untagged
@@ -136,6 +136,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -159,20 +160,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &499011269106876087
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3661487810134584628}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bcf6c7f1d63ac848a457d3fd271ec3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  color: {r: 1, g: 1, b: 1, a: 1}
-  outlineSize: 1
 --- !u!1 &3661487810194517943
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,6 +305,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickupRadius: 1.25
   origParent: {fileID: 0}
+  disableOnEmpty: 0
   triggerable: 1
   maxShootTimer: 0.1
   onStand: 0
@@ -338,6 +326,9 @@ MonoBehaviour:
   currentAmmo: 0
   weaponAccuracy: 0.5
   fireRate: 0.03
+  spinUp: 0
+  spinUpTime: 1
+  spinTime: 1
   shootTimer: 0
   muzzle: {fileID: 3661487810194517942}
   muzzleFlash: {fileID: 0}

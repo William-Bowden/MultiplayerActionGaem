@@ -4894,11 +4894,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b5e52d0372953d4b998ba41af323a1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionRadius: 1
   throwForce: 500
   fuseLength: 3
   onContact: 1
+  isSticky: 0
   explosion: {fileID: 4515741908132166135, guid: 534fd67c85403d141b3d63f74206918a,
     type: 3}
+  tickSound: {fileID: 8300000, guid: c2ddebf7375dd2a4c84890b7e72516af, type: 3}
 --- !u!199 &5067696621760070293
 ParticleSystemRenderer:
   serializedVersion: 6

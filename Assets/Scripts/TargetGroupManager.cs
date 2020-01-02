@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
-using UnityEngine.InputSystem.PlayerInput;
+using UnityEngine.InputSystem;
 
 public class TargetGroupManager : MonoBehaviour
 {

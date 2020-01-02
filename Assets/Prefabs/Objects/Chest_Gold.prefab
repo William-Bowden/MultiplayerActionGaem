@@ -157,8 +157,8 @@ MonoBehaviour:
   whatToDrop:
   - {fileID: 3661487810353502273, guid: 95e1647e89f90e440b16c6047ce8a75f, type: 3}
   - {fileID: 6717941476110073835, guid: 5ce447e52b3a5344baa54ec00ccbfdc3, type: 3}
-  - {fileID: 3661487810353502273, guid: 1a9887e77a8dc8a46bbf34b84e3a4052, type: 3}
   - {fileID: 6717941476110073835, guid: 2978b8b9b421f024f99aeacaf815b607, type: 3}
+  - {fileID: 3661487810353502273, guid: 1a9887e77a8dc8a46bbf34b84e3a4052, type: 3}
   - {fileID: 3661487810353502273, guid: 649b9de9685dcfb4e9a31d77413d001d, type: 3}
   - {fileID: 3661487810353502273, guid: 1871331dfc3b80c459014d60f933ad2f, type: 3}
   - {fileID: 3661487810353502273, guid: 0e7bddf0adc5e2b45a1d0897cbf1d24c, type: 3}

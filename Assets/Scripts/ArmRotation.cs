@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.PlayerInput;
+using UnityEngine.InputSystem;
 
 public class ArmRotation : MonoBehaviour {
 

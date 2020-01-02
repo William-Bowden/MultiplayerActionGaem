@@ -16,6 +16,8 @@ public class Grenade : MonoBehaviour
     [Range( 0, 3f ), SerializeField]
     float fuseLength = 3;
 
+    bool live = false;
+
     [SerializeField]
     bool onContact = false;
     [SerializeField]
@@ -27,7 +29,8 @@ public class Grenade : MonoBehaviour
 
     SpriteRenderer sr;
     bool tickColorOn = false;
-
+    [SerializeField]
+    AudioClip tickSound;
 
     // Start is called before the first frame update
     void Start() {
@@ -40,13 +43,14 @@ public class Grenade : MonoBehaviour
         rb.AddTorque( torque );
         rb.AddForce( transform.right * throwForce );
 
-        StartCoroutine( Tick( fuseLength ) );
         StartCoroutine( Fuse( fuseLength ) );
+        StartCoroutine( Tick( fuseLength ) );
         StartCoroutine( ResetStickyness() );
     }
 
     void Boom() {
         sr.enabled = false;
+        live = false;
         explosion.Play();
 
         transform.parent = null;
@@ -89,6 +93,7 @@ public class Grenade : MonoBehaviour
             temp.r = 1.0f;
             temp.g = 0.2f;
             temp.b = 0.2f;
+            AudioSource.PlayClipAtPoint( tickSound, transform.position );
         }
         else {
             temp.r = 1.0f;
@@ -99,7 +104,6 @@ public class Grenade : MonoBehaviour
         sr.color = temp;
     }
 
-    // Wait for the first 75% of the fuse, then blink for 25%, then blow up
     IEnumerator Tick( float waitTime ) {
         float newTime = waitTime / 2;
         yield return new WaitForSeconds( newTime * 0.75f );
@@ -107,7 +111,7 @@ public class Grenade : MonoBehaviour
         // the "timer" that controls color ticking of the grenade
         float ticker = newTime * 0.25f;
 
-        while( true ) {
+        while( live ) {
             yield return new WaitForSeconds( ticker );
             // reduce ticker
             ticker *= 0.75f;
@@ -123,6 +127,7 @@ public class Grenade : MonoBehaviour
     }
 
     IEnumerator Fuse( float waitTime ) {
+        live = true;
         yield return new WaitForSeconds( waitTime );
         Boom();
     }

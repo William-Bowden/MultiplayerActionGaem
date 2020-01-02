@@ -56,6 +56,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -127,7 +128,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5b0bc317862dc5642808511fe7d4ce3c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -135,6 +136,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -169,7 +171,7 @@ GameObject:
   - component: {fileID: 6717941476110073831}
   - component: {fileID: 6717941476110073829}
   - component: {fileID: 6717941476110073833}
-  - component: {fileID: 6717941476110073832}
+  - component: {fileID: 4429910435605209857}
   - component: {fileID: 7703512430096047373}
   - component: {fileID: 7781775068055341072}
   m_Layer: 11
@@ -232,8 +234,8 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.05}
   serializedVersion: 2
   m_Radius: 0.15
---- !u!58 &6717941476110073832
-CircleCollider2D:
+--- !u!61 &4429910435605209857
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -245,9 +247,19 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.125}
+  m_Offset: {x: 0, y: 0.025}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.075
+  m_Size: {x: 1.075, y: 0.25}
+  m_EdgeRadius: 0
 --- !u!114 &7703512430096047373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,8 +298,6 @@ MonoBehaviour:
   spinUp: 0
   spinUpTime: 2
   spinTime: 2
-  maxFireRate: 0
-  firing: 0
   shootTimer: 0
   muzzle: {fileID: 3607870936921617183}
   muzzleFlash: {fileID: 0}

@@ -5045,6 +5045,7 @@ MonoBehaviour:
   isSticky: 1
   explosion: {fileID: 4515741908132166135, guid: 534fd67c85403d141b3d63f74206918a,
     type: 3}
+  tickSound: {fileID: 8300000, guid: c2ddebf7375dd2a4c84890b7e72516af, type: 3}
 --- !u!199 &5067696621760070293
 ParticleSystemRenderer:
   serializedVersion: 6
