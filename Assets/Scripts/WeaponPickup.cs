@@ -8,7 +8,7 @@ public class WeaponPickup : Interactable
 
     static CompositeCollider2D worldCol;
 
-    Gun gun;
+    public Gun gun;
     [SerializeField]
     Transform origParent;
 
@@ -52,6 +52,10 @@ public class WeaponPickup : Interactable
 
         numCollisions = 0;
         Available = newAvailability;
+        if( gun.currentAmmo <= 0 ) {
+            Available = false;
+        }
+
         TogglePhysics( newAvailability );
 
         if( newAvailability ) {
@@ -102,12 +106,9 @@ public class WeaponPickup : Interactable
     }
 
     public void Interact( Transform weaponHeld, Transform newParent ) {
-        if( gun.currentAmmo <= 0 ) {
-            Available = false;
-
+        if( !Available || gun.currentAmmo <= 0 ) {
             return;
         }
-        base.Interact( newParent );
 
         if( !weaponHeld && gun.currentAmmo > 0 ) {
             // pick it up
@@ -133,8 +134,14 @@ public class WeaponPickup : Interactable
         rb.simulated = physics;
 
         if( physics ) {
-            Vector3 dir = ( transform.parent.position - transform.parent.parent.position ).normalized;
-            rb.AddForce( dir * 500.0f );
+            try {
+                Vector3 dir = ( transform.parent.position - transform.parent.parent.position ).normalized;
+                rb.AddForce( dir * 500.0f );
+            }
+            catch( System.Exception ) {
+                RemovePickup();
+                return;
+            }
             gun.muzzleFlash.enabled = false;
 
             if( gun.currentAmmo <= 0 ) {

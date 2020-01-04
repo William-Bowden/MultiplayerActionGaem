@@ -24,6 +24,7 @@ public class WeaponGrabber : MonoBehaviour
         if( weaponHeld && weaponHeld.GetComponent<Gun>().currentAmmo <= 0 ) {
             WeaponPickup currentWeapon = weaponHeld.GetComponent<WeaponPickup>();
             currentWeapon.SetAvailability( true );
+
             weaponHeld = null;
             return null;
         }

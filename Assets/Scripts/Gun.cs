@@ -7,6 +7,7 @@ public class Gun : MonoBehaviour
 {
 
     SpriteRenderer sr;
+    Material mat;
 
     [Header( "Gun Attributes" )]
     [SerializeField]
@@ -56,6 +57,7 @@ public class Gun : MonoBehaviour
         }
 
         sr = transform.GetChild( 0 ).GetComponent<SpriteRenderer>();
+        mat = sr.material;
         laserSight = GetComponent<LineRenderer>();
     }
 
@@ -201,12 +203,14 @@ public class Gun : MonoBehaviour
             return;
         }
 
+
         Color temp = sr.color;
         temp.r = 1.0f;
         temp.g = 1.0f;
         temp.b = 1.0f;
         temp.a = 1.0f;
-        sr.color = temp;
+        //sr.color = temp;
+        mat.SetColor( "_OutlineColor", temp );
     }
 
     public void SetEmptyColor() {
@@ -215,7 +219,10 @@ public class Gun : MonoBehaviour
         temp.g = 0.2f;
         temp.b = 0.2f;
         temp.a = 0.8f;
-        sr.color = temp;
+        //sr.color = temp;
+        mat.SetColor( "_OutlineColor", temp );
+        mat.SetFloat( "_OutlineThickness", 1.0f );
+        mat.SetFloat( "_SolidOutline", 1.0f ); // make outline code based
     }
 
 }

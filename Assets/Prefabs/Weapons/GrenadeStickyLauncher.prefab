@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 6717941476110073831}
   - component: {fileID: 6717941476110073829}
   - component: {fileID: 6717941476110073833}
-  - component: {fileID: 6717941476110073832}
+  - component: {fileID: 7038156144739817304}
   - component: {fileID: 7703512430096047373}
   - component: {fileID: 7781775068055341072}
   m_Layer: 11
@@ -234,8 +234,8 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.05}
   serializedVersion: 2
   m_Radius: 0.15
---- !u!58 &6717941476110073832
-CircleCollider2D:
+--- !u!61 &7038156144739817304
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -247,9 +247,19 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.125}
+  m_Offset: {x: 0, y: 0.025}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.075
+  m_Size: {x: 1.075, y: 0.25}
+  m_EdgeRadius: 0
 --- !u!114 &7703512430096047373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,6 +273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupRadius: 1.5
+  gun: {fileID: 0}
   origParent: {fileID: 0}
   disableOnEmpty: 0
   triggerable: 0
