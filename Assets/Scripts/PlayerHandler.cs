@@ -45,6 +45,7 @@ public class PlayerHandler : MonoBehaviour
         identifier.SetColor( playerNumber );
     }
 
+    // TODO: if called twice(simultaneously), currently possible to return the same position
     public Vector3 GetRandSpawnPos() {
         return spawnPositions[ Random.Range( 0, spawnPositions.Count - 1 ) ];
     }

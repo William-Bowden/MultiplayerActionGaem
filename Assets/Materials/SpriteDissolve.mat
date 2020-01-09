@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SpriteOutline
+  m_Name: SpriteDissolve
   m_Shader: {fileID: -6465566751694194690, guid: 5b4e3e36084223d439e18891b4d4c4e4,
     type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
