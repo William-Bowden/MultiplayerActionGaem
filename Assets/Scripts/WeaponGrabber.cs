@@ -91,9 +91,11 @@ public class WeaponGrabber : MonoBehaviour
 
     private void OnTriggerEnter2D( Collider2D collision ) {
         interactables.Add( collision.GetComponent<Interactable>() );
+        collision.GetComponent<Gun>().EnableOutline();
     }
     private void OnTriggerExit2D( Collider2D collision ) {
         interactables.Remove( collision.GetComponent<Interactable>() );
+        collision.GetComponent<Gun>().DisableOutline();
     }
 
     void OnDrawGizmos() {

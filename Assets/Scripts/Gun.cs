@@ -8,6 +8,7 @@ public class Gun : MonoBehaviour
 
     SpriteRenderer sr;
     Material mat;
+    int outlinedBy = 0;
 
     [Header( "Gun Attributes" )]
     [SerializeField]
@@ -59,6 +60,8 @@ public class Gun : MonoBehaviour
         sr = transform.GetChild( 0 ).GetComponent<SpriteRenderer>();
         mat = sr.material;
         laserSight = GetComponent<LineRenderer>();
+
+        DisableOutline();
     }
 
     // Update is called once per frame
@@ -223,6 +226,25 @@ public class Gun : MonoBehaviour
         mat.SetColor( "_OutlineColor", temp );
         mat.SetFloat( "_OutlineThickness", 1.0f );
         mat.SetFloat( "_SolidOutline", 1.0f ); // make outline code based
+    }
+
+    public void EnableOutline() {
+        outlinedBy++;
+
+        mat.SetFloat( "_OutlineThickness", 1.5f );
+        mat.SetFloat( "_SolidOutline", 0.0f );
+    }
+
+    public void DisableOutline() {
+        outlinedBy--;
+
+        // if it's still outlined by another source, do not stop outlining it
+        if( outlinedBy > 0 ) {
+            return;
+        }
+
+        mat.SetFloat( "_OutlineThickness", 0.0f );
+        mat.SetFloat( "_SolidOutline", 0.0f );
     }
 
 }
