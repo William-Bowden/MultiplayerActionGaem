@@ -56,7 +56,9 @@ public class PlayerDamageable : Damageable
                     }
                 }
 
-                if( character.GetComponent<Rigidbody2D>().velocity.y < -0.1f ) {
+                Rigidbody2D rb = character.GetComponent<Rigidbody2D>();
+
+                if( rb && rb.velocity.y < -0.1f ) {
                     Vector3 diff = Vector3.Normalize( transform.position - collision.transform.position );
                     float dot = Vector3.Dot( diff, Vector3.up );
 
