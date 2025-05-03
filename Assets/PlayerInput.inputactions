@@ -35,7 +35,7 @@
                     "id": "08193a1f-df2c-4a45-9608-6fd1db88f16a",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(pressPoint=2E-05)"
+                    "interactions": "Press"
                 },
                 {
                     "name": "ShootRelease",
@@ -43,7 +43,7 @@
                     "id": "4e888ac6-f8e6-4c84-99ae-5df1156d8ffa",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(pressPoint=2E-05,behavior=1)"
+                    "interactions": "Press(pressPoint=0.5,behavior=1)"
                 },
                 {
                     "name": "Interact",
